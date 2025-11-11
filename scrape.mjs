@@ -183,48 +183,66 @@ const providers = {
     }
   },
 
-  Agoda: {
-    name:'Agoda',
-    searchUrl: q => `https://www.agoda.com/search?checkIn=${ci}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${encodeURIComponent(q)}`,
-    async search(page, query){
-      await page.goto(this.searchUrl(query+' Saudi Arabia'), { waitUntil:'domcontentloaded', timeout: TIMEOUT });
+    Agoda: {
+    name: 'Agoda',
+    searchUrl: q =>
+      `https://www.agoda.com/search?checkIn=${ci}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${encodeURIComponent(q)}`,
+    async search(page, query) {
+      await page.goto(this.searchUrl(query + ' Saudi Arabia'), { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
-      await page.waitForSelector('[data-testid="hotel-name"], [itemprop="name"], a[data-selenium="hotel-name"]', { timeout: 15000 }).catch(()=>{});
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+      await page.waitForSelector('[data-testid="hotel-name"], [itemprop="name"], a[data-selenium="hotel-name"]', { timeout: 15000 }).catch(() => {});
       await autoScroll(page);
 
       const cards = await page.$$('[data-testid="hotel-name"], a[data-selenium="hotel-name"], [itemprop="name"]');
       const out = [];
-      let idx=0;
-      for (const el of cards){
-        const hotel = (await el.innerText().catch(()=>''))?.trim();
-        const root = await el.evaluateHandle(n=>n.closest('a')||n.closest('div'));
-        let href=''; try{ href = await (await root.asElement()).getAttribute('href') || '';}catch{}
-        if (href && !href.startsWith('http')) href = 'https://www.agoda.com'+href;
+      let idx = 0;
 
-        // price
-        let seg = await (await root.asElement())?.innerText().catch(()=>'')) || '';
+      for (const el of cards) {
+        const hotel = (await el.innerText().catch(() => '')).trim();
+
+        const rootHandle = await el.evaluateHandle(n => n.closest('a') || n.closest('div'));
+        let href = '';
+        try {
+          const rootEl = rootHandle.asElement();
+          if (rootEl) href = (await rootEl.getAttribute('href')) || '';
+        } catch {}
+        if (href && !href.startsWith('http')) href = 'https://www.agoda.com' + href;
+
+        // اقرأ نص الجذر لإلتقاط السعر
+        let seg = '';
+        try {
+          const rootEl = rootHandle.asElement();
+          if (rootEl) seg = (await rootEl.innerText()) || '';
+        } catch {}
         const m = seg.match(/(SAR|ر\.س|ريال)[^\d]*([\d\.,]+)/i);
         const price = m ? toNum(m[2]) : NaN;
 
         if (!hotel || !href) continue;
         idx++;
-        out.push({ platform:'Agoda', rank: idx, hotel, url: href, lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR' });
-        if (out.length>=MAX_PER_PROVIDER) break;
+        out.push({
+          platform: 'Agoda',
+          rank: idx,
+          hotel,
+          url: href,
+          lowestPrice: Number.isFinite(price) ? price : NaN,
+          currency: 'SAR'
+        });
+        if (out.length >= MAX_PER_PROVIDER) break;
       }
       return out;
     },
-    async units(page, hotelUrl){
+    async units(page, hotelUrl) {
       const out = [];
-      await page.goto(hotelUrl, { waitUntil:'domcontentloaded', timeout: TIMEOUT });
+      await page.goto(hotelUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
       const rooms = await page.$$('[data-component="room-name"], .RoomName, [data-selenium="room-name"]');
-      for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)){
-        const title = (await r.innerText().catch(()=>null)) || 'Room';
-        const seg = await r.evaluate(el=>el.parentElement?.innerText || '');
+      for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)) {
+        const title = (await r.innerText().catch(() => null)) || 'Room';
+        const seg = await r.evaluate(el => el.parentElement?.innerText || '');
         const m = seg.match(/(SAR|ر\.س|ريال)[^\d]*([\d\.,]+)/g) || [];
-        const nums = m.map(x=>toNum(x)).filter(Number.isFinite);
+        const nums = m.map(x => toNum(x)).filter(Number.isFinite);
         if (!nums.length) continue;
         const cancellable = /Free cancellation|إلغاء مجاني/i.test(seg) ? Math.min(...nums) : null;
         const nonref = /Non-refundable|غير قابل للاسترداد/i.test(seg) ? Math.min(...nums) : null;
@@ -233,6 +251,7 @@ const providers = {
       return out;
     }
   },
+
 
   Expedia: {
     name:'Expedia',
