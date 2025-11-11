@@ -1,9 +1,9 @@
 /** Report from GitHub JSON — v3 (per-platform tables + Google Sheet) */
 const CFG = {
   TIMEZONE: 'Asia/Riyadh',
-  RECIPIENTS: ['msw.sa99@gmail.com','eaisocials2025@gmail.com'],
+  RECIPIENTS: ['imwisemo@gmail.com','eaisocials2025@gmail.com'],
   SENDER_NAME: 'Al Eairy — Daily OTA Report',
-  REMOTE_JSON_URL: 'https://raw.githubusercontent.com/USER/REPO/main/data/latest.json', // <-- غيّر USER/REPO
+  REMOTE_JSON_URL: 'https://raw.githubusercontent.com/thewisemo/al-eairy-ota/main/data/latest.json', // <-- غيّر USER/REPO
   SHEET_ID: '' // اختياري
 };
 
