@@ -38,28 +38,16 @@ function arNorm(s=''){
 }
 
 const VARIANTS = {
-  'الرياض': ['Riyadh','الرياض'],
-  'جدة': ['Jeddah','جدة'],
-  'مكة': ['Makkah','Mecca','مكة'],
-  'المدينة المنورة': ['Medina','Madinah','Al Madinah','المدينة المنورة'],
-  'الدمام': ['Dammam','الدمام'],
-  'الأحساء': ['Al Ahsa','Al-Hasa','Hofuf','Al Hofuf','الأحساء'],
-  'الهفوف': ['Hofuf','Al Hofuf','Al Ahsa','الهفوف'],
   'بريدة': ['Buraydah','Buraidah','بريدة'],
-  'عنيزة': ['Unayzah','Unaizah','عنيزة'],
+  'النعيرية': ['An Nairyah','Al Nairyah','النعيرية'],
+  'الدمام': ['Dammam','الدمام'],
+  'المدينة المنورة': ['Medina','Madinah','Al Madinah','المدينة المنورة'],
+  'الأحساء': ['Al Ahsa','Al-Hasa','Hofuf','Al Hofuf','الأحساء'],
   'حائل': ['Hail','حائل'],
   'تبوك': ['Tabuk','تبوك'],
-  'أبها': ['Abha','أبها'],
-  'خميس مشيط': ['Khamis Mushayt','Khamis Mushait','خميس مشيط'],
-  'نجران': ['Najran','نجران'],
   'جازان': ['Jazan','Jizan','جازان'],
   'جيزان': ['Jazan','Jizan','جيزان'],
   'الباحة': ['Al Bahah','Al Baha','الباحة'],
-  'النعيرية': ['An Nairyah','Al Nairyah','النعيرية'],
-  'القطيف': ['Qatif','القطيف'],
-  'ينبع': ['Yanbu','ينبع'],
-  'الجبيل': ['Jubail','الجبيل'],
-  'حفر الباطن': ['Hafar Al-Batin','Hafar Al Batin','حفر الباطن'],
 };
 
 const VAR_KEYS = Object.keys(VARIANTS);
