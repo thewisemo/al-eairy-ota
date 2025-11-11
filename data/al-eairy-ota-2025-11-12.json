@@ -5,67 +5,122 @@
   "cities": [],
   "meta": {
     "الرياض": {
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"chrome-error://chromewebdata/\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Agoda": "no-results:الرياض",
+      "Expedia": "no-results:الرياض"
     },
     "جدة": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%AC%D8%AF%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%AC%D8%AF%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
+      "Booking": "no-results:جدة",
       "Agoda": "no-results:جدة",
       "Expedia": "no-results:جدة"
     },
     "مكة": {
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D9%85%D9%83%D8%A9%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"chrome-error://chromewebdata/\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D9%85%D9%83%D8%A9%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D9%85%D9%83%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D9%85%D9%83%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:مكة",
+      "Agoda": "no-results:مكة",
+      "Expedia": "no-results:مكة"
     },
     "المدينة المنورة": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D9%85%D9%83%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:المدينة المنورة",
+      "Agoda": "no-results:المدينة المنورة",
+      "Expedia": "no-results:المدينة المنورة"
     },
     "الدمام": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%AF%D9%85%D8%A7%D9%85%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D9%88%D8%B1%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%AF%D9%85%D8%A7%D9%85%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D8%AF%D9%85%D8%A7%D9%85%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%AF%D9%85%D8%A7%D9%85%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D8%AF%D9%85%D8%A7%D9%85%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%AF%D9%85%D8%A7%D9%85%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%AF%D9%85%D8%A7%D9%85%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:الدمام",
+      "Agoda": "no-results:الدمام|Dammam",
+      "Expedia": "no-results:الدمام|Dammam"
+    },
+    "الخبر": {
+      "Agoda": "no-results:الخبر",
+      "Expedia": "no-results:الخبر"
     },
     "الأحساء": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%A3%D8%AD%D8%B3%D8%A7%D8%A1%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%AF%D9%85%D8%A7%D9%85%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%A3%D8%AD%D8%B3%D8%A7%D8%A1%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D8%A3%D8%AD%D8%B3%D8%A7%D8%A1%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%A3%D8%AD%D8%B3%D8%A7%D8%A1%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D8%A3%D8%AD%D8%B3%D8%A7%D8%A1%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%A3%D8%AD%D8%B3%D8%A7%D8%A1%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%A3%D8%AD%D8%B3%D8%A7%D8%A1%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:الأحساء",
+      "Agoda": "no-results:الأحساء",
+      "Expedia": "no-results:الأحساء"
+    },
+    "الهفوف": {
+      "Booking": "no-results:الهفوف",
+      "Agoda": "no-results:الهفوف",
+      "Expedia": "no-results:الهفوف"
     },
     "بريدة": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%A3%D8%AD%D8%B3%D8%A7%D8%A1%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:بريدة",
+      "Agoda": "no-results:بريدة",
+      "Expedia": "no-results:بريدة"
+    },
+    "عنيزة": {
+      "Booking": "no-results:عنيزة",
+      "Agoda": "no-results:عنيزة",
+      "Expedia": "no-results:عنيزة"
     },
     "حائل": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%AD%D8%A7%D8%A6%D9%84%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A8%D8%B1%D9%8A%D8%AF%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%AD%D8%A7%D8%A6%D9%84%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%AD%D8%A7%D8%A6%D9%84%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%AD%D8%A7%D8%A6%D9%84%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%AD%D8%A7%D8%A6%D9%84%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%AD%D8%A7%D8%A6%D9%84%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%AD%D8%A7%D8%A6%D9%84%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:حائل",
+      "Agoda": "no-results:حائل",
+      "Expedia": "no-results:حائل"
     },
     "تبوك": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%AA%D8%A8%D9%88%D9%83%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%AD%D8%A7%D8%A6%D9%84%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%AA%D8%A8%D9%88%D9%83%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%AA%D8%A8%D9%88%D9%83%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%AA%D8%A8%D9%88%D9%83%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%AA%D8%A8%D9%88%D9%83%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%AA%D8%A8%D9%88%D9%83%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%AA%D8%A8%D9%88%D9%83%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:تبوك",
+      "Agoda": "no-results:تبوك",
+      "Expedia": "no-results:تبوك"
+    },
+    "أبها": {
+      "Booking": "no-results:أبها",
+      "Agoda": "no-results:أبها",
+      "Expedia": "no-results:أبها"
+    },
+    "خميس مشيط": {
+      "Booking": "no-results:خميس مشيط",
+      "Agoda": "no-results:خميس مشيط",
+      "Expedia": "no-results:خميس مشيط"
     },
     "نجران": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D9%86%D8%AC%D8%B1%D8%A7%D9%86%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%AA%D8%A8%D9%88%D9%83%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D9%86%D8%AC%D8%B1%D8%A7%D9%86%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D9%86%D8%AC%D8%B1%D8%A7%D9%86%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D9%86%D8%AC%D8%B1%D8%A7%D9%86%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D9%86%D8%AC%D8%B1%D8%A7%D9%86%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D9%86%D8%AC%D8%B1%D8%A7%D9%86%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D9%86%D8%AC%D8%B1%D8%A7%D9%86%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:نجران",
+      "Agoda": "no-results:نجران",
+      "Expedia": "no-results:نجران"
     },
     "جازان": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%AC%D8%A7%D8%B2%D8%A7%D9%86%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D9%86%D8%AC%D8%B1%D8%A7%D9%86%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%AC%D8%A7%D8%B2%D8%A7%D9%86%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%AC%D8%A7%D8%B2%D8%A7%D9%86%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%AC%D8%A7%D8%B2%D8%A7%D9%86%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%AC%D8%A7%D8%B2%D8%A7%D9%86%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%AC%D8%A7%D8%B2%D8%A7%D9%86%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%AC%D8%A7%D8%B2%D8%A7%D9%86%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:جازان",
+      "Agoda": "no-results:جازان",
+      "Expedia": "no-results:جازان"
     },
     "الباحة": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%A8%D8%A7%D8%AD%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%AC%D8%A7%D8%B2%D8%A7%D9%86%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%A8%D8%A7%D8%AD%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D8%A8%D8%A7%D8%AD%D8%A9%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D8%A8%D8%A7%D8%AD%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D8%A8%D8%A7%D8%AD%D8%A9%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%A8%D8%A7%D8%AD%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%A8%D8%A7%D8%AD%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:الباحة",
+      "Agoda": "no-results:الباحة",
+      "Expedia": "no-results:الباحة"
     },
     "النعيرية": {
-      "Booking": "error:page.goto: Navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D9%86%D8%B9%D9%8A%D8%B1%D9%8A%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\" is interrupted by another navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D8%A8%D8%A7%D8%AD%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\"\nCall log:\n  - navigating to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D9%86%D8%B9%D9%8A%D8%B1%D9%8A%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\", waiting until \"domcontentloaded\"\n",
-      "Agoda": "error:page.goto: Navigation to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D9%86%D8%B9%D9%8A%D8%B1%D9%8A%D8%A9%2C%20Saudi%20Arabia\" is interrupted by another navigation to \"https://www.booking.com/searchresults.html?ss=%D8%A7%D9%84%D9%86%D8%B9%D9%8A%D8%B1%D9%8A%D8%A9%2C%20Saudi%20Arabia&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us\"\nCall log:\n  - navigating to \"https://www.agoda.com/search?checkIn=2025-11-12&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=%D8%A7%D9%84%D9%86%D8%B9%D9%8A%D8%B1%D9%8A%D8%A9%2C%20Saudi%20Arabia\", waiting until \"domcontentloaded\"\n",
-      "Expedia": "error:page.goto: Navigation to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D9%86%D8%B9%D9%8A%D8%B1%D9%8A%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\" is interrupted by another navigation to \"https://www.agoda.com/\"\nCall log:\n  - navigating to \"https://www.expedia.com/Hotel-Search?destination=%D8%A7%D9%84%D9%86%D8%B9%D9%8A%D8%B1%D9%8A%D8%A9%2C%20Saudi%20Arabia&startDate=2025-11-12&endDate=2025-11-13&adults=2&rooms=1&langid=1033&currency=SAR\", waiting until \"domcontentloaded\"\n"
+      "Booking": "no-results:النعيرية",
+      "Agoda": "no-results:النعيرية",
+      "Expedia": "no-results:النعيرية"
+    },
+    "القطيف": {
+      "Booking": "no-results:القطيف",
+      "Agoda": "no-results:القطيف",
+      "Expedia": "no-results:القطيف"
+    },
+    "ينبع": {
+      "Booking": "no-results:ينبع",
+      "Agoda": "no-results:ينبع",
+      "Expedia": "no-results:ينبع"
+    },
+    "الجبيل": {
+      "Booking": "no-results:الجبيل",
+      "Agoda": "no-results:الجبيل",
+      "Expedia": "no-results:الجبيل"
+    },
+    "حفر الباطن": {
+      "Booking": "no-results:حفر الباطن",
+      "Agoda": "no-results:حفر الباطن",
+      "Expedia": "no-results:حفر الباطن"
+    },
+    "عرعر": {
+      "Booking": "no-results:عرعر",
+      "Agoda": "no-results:عرعر",
+      "Expedia": "no-results:عرعر"
+    },
+    "سكاكا": {
+      "Booking": "no-results:سكاكا",
+      "Agoda": "no-results:سكاكا",
+      "Expedia": "no-results:سكاكا"
     }
   }
 }
