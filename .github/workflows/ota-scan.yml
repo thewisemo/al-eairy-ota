@@ -2,9 +2,7 @@ name: Daily OTA Scan
 
 on:
   schedule:
-    # GitHub Actions runs in UTC.
-    # 21:00 Riyadh = 18:00 UTC
-    - cron: "0 18 * * *"
+    - cron: "0 18 * * *"  # 21:00 Riyadh = 18:00 UTC
   workflow_dispatch:
 
 permissions:
