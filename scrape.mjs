@@ -17,9 +17,15 @@ const BRAND_RX = [/al\s*eairy/i, /العييري/, /al-?ayeri/i];
 const isAlEairy = (s='') => BRAND_RX.some(r=>r.test(s));
 
 function loadCities(){
-  try { return fs.readFileSync('data/cities.txt','utf8').split(/\r?\n/).map(s=>s.trim()).filter(Boolean); }
-  catch { return []; }
+  try {
+    const txt = fs.readFileSync('data/cities.txt','utf8');
+    const arr = txt.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+    if (arr.length) return arr;
+  } catch {}
+  // Fallback لو الملف مش موجود أو فاضي
+  return ['الأحساء','النعيرية','بريدة','الدمام','المدينة المنورة','مكة','جدة','حائل','الباحة','جازان','تبوك','أبها','خميس مشيط','نجران','القطيف','ينبع','الجبيل','عنيزة','الهفوف','حفر الباطن'];
 }
+
 
 const VARIANTS = {
   'الرياض': ['الرياض','Riyadh'],
