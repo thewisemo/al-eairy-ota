@@ -1,10 +1,4 @@
-// scrape.mjs — Playwright headless scraper (free, public repo)
-// هدفه: لكل مدينة سعودية يظهر فيها "العييري" على المنصات، يجيب أرخص 15
-// على مستوى المدينة (مجمعة من المنصات) + يجرب يقرأ وحدات/غرف الفندق من صفحته.
-//
-// ملاحظات: سِلِكتورات المنصات تتغير أحيانًا؛ لو حصل، نُعدّلها ببساطة.
-// رجاءً احترم شروط كل منصة. هذا حلّ تشغيلي منخفض التكلفة وليس شراكة رسمية.
-
+// scrape.mjs — Playwright scraper v2
 import { chromium } from 'playwright';
 import fs from 'fs';
 
@@ -13,49 +7,30 @@ const CITIES = [
   'Buraidah','Hail','Tabuk','Abha','Khamis Mushait','Najran','Jazan','Al Baha',
   'Al Nairyah','Qatif','Yanbu','Arar','Sakaka','Hafar Al-Batin','Jubail','Unaizah'
 ];
-
-// استخدم فحص الاسم لتحديد هل الفندق العييري
 const BRAND_RX = [/al\s*eairy/i, /العييري/, /al-?ayeri/i];
-
 const MAX_PER_PROVIDER = 15;
-const MAX_UNIT_ROWS_PER_HOTEL = 20; // لحماية زمن التشغيل
+const MAX_UNIT_ROWS_PER_HOTEL = 20;
 const TIMEOUT = 35000;
 
 const today = new Date();
-const checkIn = new Date(today.getTime() + 1 * 24*60*60*1000);
-const checkOut = new Date(today.getTime() + 2 * 24*60*60*1000);
-const ymd = d => d.toISOString().slice(0,10);
-const CHECKIN = ymd(checkIn);
-const CHECKOUT = ymd(checkOut);
+const ci = ymd(new Date(today.getTime()+1*864e5));
+const co = ymd(new Date(today.getTime()+2*864e5));
 
+function ymd(d){ return d.toISOString().slice(0,10); }
 function isAlEairy(name=''){ return BRAND_RX.some(rx=>rx.test(name)); }
 function toNum(s){ const t=(s||'').toString().replace(/[^\d.,]/g,'').replace(/,/g,''); return t?+t:NaN; }
+async function go(p,u){ await p.goto(u,{waitUntil:'domcontentloaded',timeout:TIMEOUT}); }
+function sortByPriceAsc(arr){ return arr.sort((a,b)=> (Number.isFinite(a.lowestPrice)?a.lowestPrice:1e15) - (Number.isFinite(b.lowestPrice)?b.lowestPrice:1e15)); }
 
-async function go(page, url){
-  await page.goto(url, { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
-}
-
-function sortByPriceAsc(arr){
-  return arr.sort((a,b)=>{
-    const ax = Number.isFinite(a.lowestPrice)?a.lowestPrice:Infinity;
-    const bx = Number.isFinite(b.lowestPrice)?b.lowestPrice:Infinity;
-    return ax-bx;
-  });
-}
-
-/* -------- Providers (search + units) -------- */
 const providers = {
   booking: {
-    name: 'Booking',
-    buildSearch(city){
-      const q = encodeURIComponent(`${city}, Saudi Arabia`);
-      return `https://www.booking.com/searchresults.html?ss=${q}&checkin=${CHECKIN}&checkout=${CHECKOUT}&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us`;
-    },
-    async search(page, city){
-      await go(page, this.buildSearch(city));
-      // جرّب سيلكتورات متعددة (الديسكتوب)
+    name:'Booking',
+    buildSearch:(city)=>`https://www.booking.com/searchresults.html?ss=${encodeURIComponent(`${city}, Saudi Arabia`)}&checkin=${ci}&checkout=${co}&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us`,
+    search: async (page, city)=>{
+      await go(page, providers.booking.buildSearch(city));
       const cards = await page.$$('div[data-testid="property-card"]');
       const out = [];
+      let idx = 0;
       for (const card of cards){
         const titleEl = await card.$('div[data-testid="title"]');
         const name = titleEl ? (await titleEl.innerText()) : null;
@@ -65,22 +40,16 @@ const providers = {
         const linkEl = await card.$('a[data-testid="title-link"]');
         const href = linkEl ? await linkEl.getAttribute('href') : null;
         if (!name || !href) continue;
-        out.push({
-          platform:'Booking',
-          hotel: name.trim(),
-          url: 'https://www.booking.com' + href,
-          lowestPrice: Number.isFinite(price)?price:NaN,
-          currency:'SAR'
-        });
-        if (out.length >= MAX_PER_PROVIDER) break;
+        idx++;
+        out.push({ platform:'Booking', rank: idx, hotel: name.trim(), url: 'https://www.booking.com'+href, lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR' });
+        if (out.length>=MAX_PER_PROVIDER) break;
       }
       return out;
     },
-    async units(page, hotelUrl){
+    units: async (page, hotelUrl)=>{
       const out = [];
       await go(page, hotelUrl);
-      const roomSel = '[data-testid="room-name"], .hprt-roomtype-icon-link';
-      const rooms = await page.$$(roomSel);
+      const rooms = await page.$$('[data-testid="room-name"], .hprt-roomtype-icon-link');
       for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)){
         const title = await r.innerText().catch(()=>null);
         const seg = await r.evaluate(el=>el.closest('tr')?.innerText || el.parentElement?.innerText || '');
@@ -96,15 +65,13 @@ const providers = {
   },
 
   agoda: {
-    name: 'Agoda',
-    buildSearch(city){
-      const q = encodeURIComponent(`${city} Saudi Arabia`);
-      return `https://www.agoda.com/search?checkIn=${CHECKIN}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${q}`;
-    },
-    async search(page, city){
-      await go(page, this.buildSearch(city));
+    name:'Agoda',
+    buildSearch:(city)=>`https://www.agoda.com/search?checkIn=${ci}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${encodeURIComponent(`${city} Saudi Arabia`)}`,
+    search: async (page, city)=>{
+      await go(page, providers.agoda.buildSearch(city));
       const out = [];
       const cards = await page.$$('[data-testid="hotel-name"], [itemprop="name"]');
+      let idx = 0;
       for (const el of cards){
         const hotel = (await el.innerText()).trim();
         const cardRoot = await el.evaluateHandle(n => n.closest('a') || n.closest('div'));
@@ -115,12 +82,13 @@ const providers = {
         const m = seg.match(/(SAR|ر\.س|ريال)[^\d]*([\d\.,]+)/i);
         const price = m ? toNum(m[2]) : NaN;
         if (!hotel || !href) continue;
-        out.push({ platform:'Agoda', hotel, url: href, lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR' });
-        if (out.length >= MAX_PER_PROVIDER) break;
+        idx++;
+        out.push({ platform:'Agoda', rank: idx, hotel, url: href, lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR' });
+        if (out.length>=MAX_PER_PROVIDER) break;
       }
       return out;
     },
-    async units(page, hotelUrl){
+    units: async (page, hotelUrl)=>{
       const out = [];
       await go(page, hotelUrl);
       const rooms = await page.$$('[data-component="room-name"], .RoomName');
@@ -139,17 +107,15 @@ const providers = {
   },
 
   expedia: {
-    name: 'Expedia',
-    buildSearch(city){
-      const q = encodeURIComponent(`${city}, Saudi Arabia`);
-      return `https://www.expedia.com/Hotel-Search?destination=${q}&startDate=${CHECKIN}&endDate=${CHECKOUT}&adults=2&rooms=1&langid=1033&currency=SAR`;
-    },
-    async search(page, city){
-      await go(page, this.buildSearch(city));
+    name:'Expedia',
+    buildSearch:(city)=>`https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(`${city}, Saudi Arabia`)}&startDate=${ci}&endDate=${co}&adults=2&rooms=1&langid=1033&currency=SAR`,
+    search: async (page, city)=>{
+      await go(page, providers.expedia.buildSearch(city));
       const out = [];
       const dataEl = await page.$('#__NEXT_DATA__');
+      let idx = 0;
       if (dataEl){
-        try {
+        try{
           const json = JSON.parse(await dataEl.innerText());
           const items = (json?.props?.pageProps?.apolloState && Object.values(json.props.pageProps.apolloState).find(x=>x?.hotelResults)?.hotelResults) || [];
           for (const it of items){
@@ -157,21 +123,24 @@ const providers = {
             const price = +(it?.price?.lead?.amount || it?.price?.displayMessages?.[0]?.value?.amount || NaN);
             const path = it?.hotelPath || '';
             if (!name) continue;
-            out.push({ platform:'Expedia', hotel:name.trim(),
+            idx++;
+            out.push({
+              platform:'Expedia', rank: idx, hotel: name.trim(),
               url: path ? (path.startsWith('http') ? path : `https://www.expedia.com${path}`) : '',
-              lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR' });
-            if (out.length >= MAX_PER_PROVIDER) break;
+              lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR'
+            });
+            if (out.length>=MAX_PER_PROVIDER) break;
           }
-        } catch(_){}
+        }catch(_){}
       }
       return out;
     },
-    async units(page, hotelUrl){
+    units: async (page, hotelUrl)=>{
       const out = [];
       await go(page, hotelUrl);
       const script = await page.$('script[type="application/json"]#__NEXT_DATA__');
       if (script){
-        try {
+        try{
           const json = JSON.parse(await script.innerText());
           const roomsMatch = JSON.stringify(json).match(/"rooms":\s*(\[[\s\S]*?\])/);
           const rooms = roomsMatch ? JSON.parse(roomsMatch[1]) : [];
@@ -185,22 +154,24 @@ const providers = {
               out.push({ name: r?.name||'Room', price: Math.min(...prices), cancellable, nonRefundable: nonref });
             }
           }
-        } catch(_){}
+        }catch(_){}
       }
       return out;
     }
   }
 };
 
-function hasAlEairy(list){ return list.some(h => isAlEairy(h.hotel)); }
+function uniqBy(arr, keyFn){
+  const seen = new Set(); const out=[];
+  for (const x of arr){ const k = keyFn(x); if (seen.has(k)) continue; seen.add(k); out.push(x); }
+  return out;
+}
 
 (async ()=>{
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({
-    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36'
-  });
+  const page = await browser.newPage({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36' });
 
-  const result = { date: ymd(today), checkIn: CHECKIN, checkOut: CHECKOUT, cities: [] };
+  const result = { date: ymd(today), checkIn: ci, checkOut: co, cities: [] };
 
   for (const city of CITIES){
     let perProvider = [];
@@ -209,28 +180,34 @@ function hasAlEairy(list){ return list.some(h => isAlEairy(h.hotel)); }
       try {
         const hits = await p.search(page, city);
         perProvider = perProvider.concat(hits);
-      } catch(e){ /* ignore */ }
+      } catch(e){ /* ignore to keep run alive */ }
     }
 
-    if (!hasAlEairy(perProvider)) continue;
+    // لازم المدينة يكون فيها العييري علشان نكمّلها
+    if (!perProvider.some(h=>isAlEairy(h.hotel))) continue;
 
-    sortByPriceAsc(perProvider);
-    const cheapest15 = perProvider.slice(0, 15);
+    // أرخص 15 للملخص
+    const citySorted = sortByPriceAsc(perProvider.slice());
+    const cheapest15 = citySorted.slice(0,15);
 
+    // أضف دائمًا كل فنادق العييري حتى لو خارج الـ15
+    const aeExtras = perProvider.filter(h=>isAlEairy(h.hotel));
+    const chosen = uniqBy(cheapest15.concat(aeExtras), h=>`${h.platform}|${h.hotel}`);
+
+    // نزول للوحدات
     const hotels = [];
-    for (const h of cheapest15){
+    for (let i=0; i<chosen.length; i++){
+      const h = chosen[i];
       const prov = providers[h.platform.toLowerCase()];
       let units = [];
-      try {
-        units = prov ? (await prov.units(page, h.url)) : [];
-      } catch(e){ units = []; }
+      try { units = prov ? (await prov.units(page, h.url)) : []; } catch(e){ units = []; }
       hotels.push({
         platform: h.platform,
-        rank: h.rank || null,
+        rank: h.rank || null,          // ترتيب داخل المنصة (قرّبناه من موضع الكارت)
         hotel: h.hotel,
         url: h.url,
         lowestPrice: Number.isFinite(h.lowestPrice) ? h.lowestPrice : null,
-        currency: h.currency || 'SAR',
+        currency: 'SAR',
         taxesIncluded: null,
         isAlEairy: isAlEairy(h.hotel),
         units: units.map(u=>({ name: u.name, price: u.price, cancellable: u.cancellable ?? null, nonRefundable: u.nonRefundable ?? null }))
