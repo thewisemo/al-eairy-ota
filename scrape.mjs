@@ -1,21 +1,24 @@
-// scrape.mjs — v4 (Arabic city names + variants + cookies + scroll + all units in SAR)
+// scrape.mjs — v4.3 (Arabic cities + variants + cookies + scroll + all units, SAR)
 import { chromium } from 'playwright';
 import fs from 'fs';
 
-const TIMEOUT = 45000;
+const TIMEOUT = 50000;
 const MAX_PER_PROVIDER = 15;
 const MAX_UNIT_ROWS_PER_HOTEL = 40;
-const SCROLL_STEPS = 10;
+const SCROLL_STEPS = 12;
 const SCROLL_DELAY = 700;
 
+// Dates: next-day check-in, 1 night
 const today = new Date();
 const ci = ymd(new Date(today.getTime()+1*864e5));
 const co = ymd(new Date(today.getTime()+2*864e5));
 function ymd(d){ return d.toISOString().slice(0,10); }
 
+// Brand detection
 const BRAND_RX = [/al\s*eairy/i, /العييري/, /al-?ayeri/i];
 const isAlEairy = (s='') => BRAND_RX.some(r=>r.test(s));
 
+// ---------- Cities ----------
 function loadCities(){
   try {
     const txt = fs.readFileSync('data/cities.txt','utf8');
@@ -26,6 +29,14 @@ function loadCities(){
   return ['الأحساء','النعيرية','بريدة','الدمام','المدينة المنورة','مكة','جدة','حائل','الباحة','جازان','تبوك','أبها','خميس مشيط','نجران','القطيف','ينبع','الجبيل','عنيزة','الهفوف','حفر الباطن'];
 }
 
+// تطبيع عربي لتطابق المفاتيح حتى مع اختلاف الهمزات/التنوين
+function arNorm(s=''){
+  return s.normalize('NFKD')
+    .replace(/[\u064B-\u065F\u0670]/g,'')  // تشكيل
+    .replace(/[^\u0600-\u06FF\w]+/g,'')    // مسافات/رموز
+    .replace(/[آأإ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي')
+    .replace(/ؤ/g,'و').replace(/ئ/g,'ي').trim();
+}
 
 const VARIANTS = {
   'الرياض': ['الرياض','Riyadh'],
@@ -54,40 +65,79 @@ const VARIANTS = {
   'سكاكا': ['سكاكا','Sakaka']
 };
 
-function expandCity(city){ return VARIANTS[city] ? VARIANTS[city] : [city]; }
+// Guess English for any Arabic name even لو المفتاح مش مطابق 1:1
+const EN_GUESS = {
+  [arNorm('الرياض')]: ['Riyadh'],
+  [arNorm('جدة')]: ['Jeddah'],
+  [arNorm('مكة')]: ['Makkah','Mecca'],
+  [arNorm('المدينة المنورة')]: ['Medina','Madinah','Al Madinah'],
+  [arNorm('الدمام')]: ['Dammam'],
+  [arNorm('الخبر')]: ['Al Khobar','Khobar'],
+  [arNorm('الأحساء')]: ['Al Ahsa','Al-Hasa','Hofuf','Al Hofuf'],
+  [arNorm('الهفوف')]: ['Hofuf','Al Hofuf','Al Ahsa'],
+  [arNorm('بريدة')]: ['Buraydah','Buraidah'],
+  [arNorm('عنيزة')]: ['Unayzah','Unaizah'],
+  [arNorm('حائل')]: ['Hail'],
+  [arNorm('تبوك')]: ['Tabuk'],
+  [arNorm('أبها')]: ['Abha'],
+  [arNorm('خميس مشيط')]: ['Khamis Mushayt','Khamis Mushait'],
+  [arNorm('نجران')]: ['Najran'],
+  [arNorm('جازان')]: ['Jazan','Jizan'],
+  [arNorm('الباحة')]: ['Al Bahah','Al Baha'],
+  [arNorm('النعيرية')]: ['An Nairyah','Al Nairyah'],
+  [arNorm('القطيف')]: ['Qatif'],
+  [arNorm('ينبع')]: ['Yanbu'],
+  [arNorm('الجبيل')]: ['Jubail'],
+  [arNorm('حفر الباطن')]: ['Hafar Al-Batin','Hafar Al Batin'],
+  [arNorm('عرعر')]: ['Arar'],
+  [arNorm('سكاكا')]: ['Sakaka'],
+};
 
-async function autoScroll(page){
-  for (let i=0;i<10;i++){
-    await page.evaluate(()=>window.scrollBy(0, window.innerHeight*0.9));
-    await page.waitForTimeout(700);
-  }
+const VAR_KEYS = Object.keys(VARIANTS);
+function expandCity(city){
+  const n = arNorm(city);
+  const exact = VAR_KEYS.find(k => arNorm(k) === n);
+  const base = exact ? VARIANTS[exact] : [city];
+  const guess = EN_GUESS[n] || [];
+  return Array.from(new Set([city, ...base, ...guess]));
 }
 
+// ---------- helpers ----------
+async function autoScroll(page){
+  for (let i=0;i<SCROLL_STEPS;i++){
+    await page.evaluate(()=>window.scrollBy(0, window.innerHeight*0.92));
+    await page.waitForTimeout(SCROLL_DELAY);
+  }
+}
 async function acceptCookies(page){
   const selectors = [
     '#onetrust-accept-btn-handler',
+    'button[aria-label*="Accept"]',
     'button:has-text("Accept")',
     'button:has-text("I agree")',
     'button:has-text("Got it")',
+    'button:has-text("OK")',
     'button:has-text("أوافق")',
     'button:has-text("قبول")',
   ];
   for (const s of selectors){
-    const el = await page.$(s).catch(()=>null);
-    if (el){ try { await el.click({timeout:2000}); } catch {} }
+    try { const el = await page.$(s); if (el) await el.click({timeout:2000}); } catch {}
   }
 }
-
 function toNum(s){ const t=(s||'').toString().replace(/[^\d.,]/g,'').replace(/,/g,''); return t?+t:NaN; }
+function uniqBy(arr, keyFn){ const st=new Set(); const out=[]; for (const x of arr){ const k=keyFn(x); if (st.has(k)) continue; st.add(k); out.push(x);} return out; }
+const byPriceAsc = (a,b)=>((Number.isFinite(a.lowestPrice)?a.lowestPrice:1e15) - (Number.isFinite(b.lowestPrice)?b.lowestPrice:1e15));
 
+// ---------- Providers ----------
 const providers = {
   Booking: {
     name:'Booking',
-    searchUrl: (q)=>`https://www.booking.com/searchresults.html?ss=${encodeURIComponent(q)}&checkin=${ci}&checkout=${co}&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us`,
+    searchUrl: q => `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(q)}&checkin=${ci}&checkout=${co}&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us`,
     async search(page, query){
       await page.goto(this.searchUrl(query+', Saudi Arabia'), { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForTimeout(800);
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
+      await page.waitForSelector('div[data-testid="property-card"], #search_results_table', { timeout: 15000 }).catch(()=>{});
       await autoScroll(page);
 
       const cards = await page.$$('div[data-testid="property-card"]');
@@ -96,7 +146,7 @@ const providers = {
       for (const card of cards){
         const titleEl = await card.$('div[data-testid="title"]');
         const name = titleEl ? (await titleEl.innerText()) : null;
-        const priceEl = await card.$('[data-testid="price-and-discounted-price"], [aria-label="Price"]');
+        const priceEl = await card.$('[data-testid="price-and-discounted-price"], [aria-label="Price"], span:has-text("SAR")');
         const priceTxt = priceEl ? (await priceEl.innerText()).replace(/\s+/g,' ') : '';
         const price = toNum(priceTxt);
         const linkEl = await card.$('a[data-testid="title-link"]');
@@ -116,10 +166,10 @@ const providers = {
       const out = [];
       await page.goto(hotelUrl, { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForTimeout(800);
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
 
       const rooms = await page.$$('[data-testid="room-name"], .hprt-roomtype-icon-link');
-      for (const r of rooms.slice(0, 40)){
+      for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)){
         const title = await r.innerText().catch(()=>null);
         const rowTxt = await r.evaluate(el=>el.closest('tr')?.innerText || el.parentElement?.innerText || '');
         const matches = rowTxt.match(/(SAR|ر\.س|ريال)\s*([\d\.,]+)/g) || [];
@@ -135,24 +185,28 @@ const providers = {
 
   Agoda: {
     name:'Agoda',
-    searchUrl: (q)=>`https://www.agoda.com/search?checkIn=${ci}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${encodeURIComponent(q)}`,
+    searchUrl: q => `https://www.agoda.com/search?checkIn=${ci}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${encodeURIComponent(q)}`,
     async search(page, query){
       await page.goto(this.searchUrl(query+' Saudi Arabia'), { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForTimeout(800);
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
+      await page.waitForSelector('[data-testid="hotel-name"], [itemprop="name"], a[data-selenium="hotel-name"]', { timeout: 15000 }).catch(()=>{});
       await autoScroll(page);
 
-      const cards = await page.$$('[data-testid="hotel-name"], [itemprop="name"]');
+      const cards = await page.$$('[data-testid="hotel-name"], a[data-selenium="hotel-name"], [itemprop="name"]');
       const out = [];
       let idx=0;
       for (const el of cards){
-        const hotel = (await el.innerText()).trim();
+        const hotel = (await el.innerText().catch(()=>''))?.trim();
         const root = await el.evaluateHandle(n=>n.closest('a')||n.closest('div'));
         let href=''; try{ href = await (await root.asElement()).getAttribute('href') || '';}catch{}
         if (href && !href.startsWith('http')) href = 'https://www.agoda.com'+href;
-        const seg = await (await root.asElement()).innerText();
+
+        // price
+        let seg = await (await root.asElement())?.innerText().catch(()=>'')) || '';
         const m = seg.match(/(SAR|ر\.س|ريال)[^\d]*([\d\.,]+)/i);
         const price = m ? toNum(m[2]) : NaN;
+
         if (!hotel || !href) continue;
         idx++;
         out.push({ platform:'Agoda', rank: idx, hotel, url: href, lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR' });
@@ -164,9 +218,9 @@ const providers = {
       const out = [];
       await page.goto(hotelUrl, { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForTimeout(800);
-      const rooms = await page.$$('[data-component="room-name"], .RoomName');
-      for (const r of rooms.slice(0, 40)){
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
+      const rooms = await page.$$('[data-component="room-name"], .RoomName, [data-selenium="room-name"]');
+      for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)){
         const title = (await r.innerText().catch(()=>null)) || 'Room';
         const seg = await r.evaluate(el=>el.parentElement?.innerText || '');
         const m = seg.match(/(SAR|ر\.س|ريال)[^\d]*([\d\.,]+)/g) || [];
@@ -182,15 +236,17 @@ const providers = {
 
   Expedia: {
     name:'Expedia',
-    searchUrl: (q)=>`https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(q)}&startDate=${ci}&endDate=${co}&adults=2&rooms=1&langid=1033&currency=SAR`,
+    searchUrl: q => `https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(q)}&startDate=${ci}&endDate=${co}&adults=2&rooms=1&langid=1033&currency=SAR`,
     async search(page, query){
       await page.goto(this.searchUrl(query+', Saudi Arabia'), { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForTimeout(800);
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
       await autoScroll(page);
 
       const out = [];
       let idx=0;
+
+      // Preferred: __NEXT_DATA__
       const dataEl = await page.$('#__NEXT_DATA__');
       if (dataEl){
         try {
@@ -203,7 +259,7 @@ const providers = {
             if (!name) continue;
             idx++;
             out.push({
-              platform:'Expedia', rank: idx, hotel: name.trim(),
+              platform:'Expedia', rank: idx, hotel: name?.trim(),
               url: path ? (path.startsWith('http') ? path : `https://www.expedia.com${path}`) : '',
               lowestPrice: Number.isFinite(amount)?amount:NaN, currency:'SAR'
             });
@@ -211,21 +267,40 @@ const providers = {
           }
         } catch {}
       }
+
+      // Fallback: visible cards
+      if (!out.length){
+        const cards = await page.$$('[data-stid="property-listing"]');
+        for (const c of cards){
+          const nameEl = await c.$('h3[data-stid="content-hotel-title"]');
+          const name = nameEl ? (await nameEl.innerText()).trim() : '';
+          const priceEl = await c.$('[data-stid="price-lockup"], span:has-text("SAR")');
+          const priceTxt = priceEl ? (await priceEl.innerText()) : '';
+          const price = toNum(priceTxt);
+          const hrefEl = await c.$('a');
+          let href = hrefEl ? await hrefEl.getAttribute('href') : '';
+          if (href && !href.startsWith('http')) href = 'https://www.expedia.com'+href;
+          if (!name || !href) continue;
+          idx++;
+          out.push({ platform:'Expedia', rank: idx, hotel: name, url: href, lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR' });
+          if (out.length>=MAX_PER_PROVIDER) break;
+        }
+      }
       return out;
     },
     async units(page, hotelUrl){
       const out = [];
       await page.goto(hotelUrl, { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForTimeout(800);
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
       const script = await page.$('script[type="application/json"]#__NEXT_DATA__');
       if (script){
         try {
           const json = JSON.parse(await script.innerText());
           const roomsMatch = JSON.stringify(json).match(/"rooms":\s*(\[[\s\S]*?\])/);
           const rooms = roomsMatch ? JSON.parse(roomsMatch[1]) : [];
-          for (const r of rooms.slice(0, 40)){
-            let prices = [];
+          for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)){
+            const prices = [];
             (r?.ratePlans||[]).forEach(p=>{ const a=+p?.price?.lead?.amount; if (Number.isFinite(a)) prices.push(a); });
             if (prices.length){
               const text = JSON.stringify(r);
@@ -241,6 +316,7 @@ const providers = {
   }
 };
 
+// --------------- Main ---------------
 (async ()=>{
   const browser = await chromium.launch({
     headless: true,
@@ -250,6 +326,7 @@ const providers = {
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36',
     timezoneId: 'Asia/Riyadh',
     locale: 'en-US',
+    viewport: { width: 1366, height: 768 }
   });
   await context.addInitScript(() => {
     Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
@@ -258,6 +335,7 @@ const providers = {
 
   const result = { date: ymd(new Date()), checkIn: ci, checkOut: co, cities: [], meta: {} };
   const CITIES = loadCities();
+  console.log('Loaded cities:', CITIES.join(', '));
 
   function logMeta(city, prov, msg){
     if (!result.meta[city]) result.meta[city] = {};
@@ -289,12 +367,7 @@ const providers = {
 
       const alOnly = hits.filter(h=>isAlEairy(h.hotel));
       const top15 = hits.slice(0, MAX_PER_PROVIDER);
-      const seen = new Set();
-      const chosen = [];
-      for (const h of alOnly.concat(top15)){
-        const k = `${h.platform}|${h.hotel}`;
-        if (seen.has(k)) continue; seen.add(k); chosen.push(h);
-      }
+      const chosen = uniqBy(alOnly.concat(top15), h=>`${h.platform}|${h.hotel}`);
 
       const hotels = [];
       for (const h of chosen){
@@ -312,16 +385,10 @@ const providers = {
           units: (units||[]).slice(0, MAX_UNIT_ROWS_PER_HOTEL)
         });
       }
-      hotels.sort((a,b)=>{
-        const ax=Number.isFinite(a.lowestPrice)?a.lowestPrice:1e15;
-        const bx=Number.isFinite(b.lowestPrice)?b.lowestPrice:1e15;
-        return ax-bx;
-      });
-      cityProviders[provName] = hotels;
+      cityProviders[provName] = hotels.sort(byPriceAsc);
     }
 
-    const hasAl = Object.values(cityProviders).some(list => (list||[]).some(h=>h.isAlEairy));
-    if (!hasAl) continue;
+    // لا تشطب المدينة حتى لو العييري غير ظاهر – لازم للمقارنة
     result.cities.push({ city, providers: cityProviders });
   }
 
