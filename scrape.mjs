@@ -1,12 +1,13 @@
-// scrape.mjs — v4.3 (Arabic cities + variants + cookies + scroll + all units, SAR)
+// scrape.mjs — v4.4 (robust variants EN-first, waits, retries, scroll; SAR; keep city even if empty)
 import { chromium } from 'playwright';
 import fs from 'fs';
 
-const TIMEOUT = 50000;
+const TIMEOUT = 55000;
 const MAX_PER_PROVIDER = 15;
 const MAX_UNIT_ROWS_PER_HOTEL = 40;
 const SCROLL_STEPS = 12;
 const SCROLL_DELAY = 700;
+const RETRIES_PER_PROVIDER = 2;   // إعادة المحاولة لو الصفحة طلعت فاضية
 
 // Dates: next-day check-in, 1 night
 const today = new Date();
@@ -25,88 +26,63 @@ function loadCities(){
     const arr = txt.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
     if (arr.length) return arr;
   } catch {}
-  // Fallback لو الملف مش موجود أو فاضي
-  return ['الأحساء','النعيرية','بريدة','الدمام','المدينة المنورة','مكة','جدة','حائل','الباحة','جازان','تبوك','أبها','خميس مشيط','نجران','القطيف','ينبع','الجبيل','عنيزة','الهفوف','حفر الباطن'];
+  return ['الأحساء','النعيرية','بريدة','الدمام','المدينة المنورة','مكة','جدة','حائل','الباحة','جازان','تبوك','أبها'];
 }
 
-// تطبيع عربي لتطابق المفاتيح حتى مع اختلاف الهمزات/التنوين
 function arNorm(s=''){
   return s.normalize('NFKD')
-    .replace(/[\u064B-\u065F\u0670]/g,'')  // تشكيل
-    .replace(/[^\u0600-\u06FF\w]+/g,'')    // مسافات/رموز
+    .replace(/[\u064B-\u065F\u0670]/g,'')
+    .replace(/[^\u0600-\u06FF\w]+/g,'')
     .replace(/[آأإ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي')
     .replace(/ؤ/g,'و').replace(/ئ/g,'ي').trim();
 }
 
 const VARIANTS = {
-  'الرياض': ['الرياض','Riyadh'],
-  'جدة': ['جدة','Jeddah'],
-  'مكة': ['مكة','Mecca','Makkah'],
-  'المدينة المنورة': ['المدينة المنورة','Medina','Madinah','Al Madinah'],
-  'الدمام': ['الدمام','Dammam'],
-  'الخبر': ['الخبر','Al Khobar','Khobar'],
-  'الأحساء': ['الأحساء','Al Ahsa','Al-Hasa','Hofuf','Al Hofuf'],
-  'الهفوف': ['الهفوف','Hofuf','Al Hofuf','Al Ahsa'],
-  'بريدة': ['بريدة','Buraydah','Buraidah'],
-  'عنيزة': ['عنيزة','Unayzah','Unaizah'],
-  'حائل': ['حائل','Hail'],
-  'تبوك': ['تبوك','Tabuk'],
-  'أبها': ['أبها','Abha'],
-  'خميس مشيط': ['خميس مشيط','Khamis Mushayt','Khamis Mushait'],
-  'نجران': ['نجران','Najran'],
-  'جازان': ['جازان','Jazan','Jizan'],
-  'الباحة': ['الباحة','Al Bahah','Al Baha'],
-  'النعيرية': ['النعيرية','An Nairyah','Al Nairyah'],
-  'القطيف': ['القطيف','Qatif'],
-  'ينبع': ['ينبع','Yanbu'],
-  'الجبيل': ['الجبيل','Jubail'],
-  'حفر الباطن': ['حفر الباطن','Hafar Al-Batin','Hafar Al Batin'],
-  'عرعر': ['عرعر','Arar'],
-  'سكاكا': ['سكاكا','Sakaka']
-};
-
-// Guess English for any Arabic name even لو المفتاح مش مطابق 1:1
-const EN_GUESS = {
-  [arNorm('الرياض')]: ['Riyadh'],
-  [arNorm('جدة')]: ['Jeddah'],
-  [arNorm('مكة')]: ['Makkah','Mecca'],
-  [arNorm('المدينة المنورة')]: ['Medina','Madinah','Al Madinah'],
-  [arNorm('الدمام')]: ['Dammam'],
-  [arNorm('الخبر')]: ['Al Khobar','Khobar'],
-  [arNorm('الأحساء')]: ['Al Ahsa','Al-Hasa','Hofuf','Al Hofuf'],
-  [arNorm('الهفوف')]: ['Hofuf','Al Hofuf','Al Ahsa'],
-  [arNorm('بريدة')]: ['Buraydah','Buraidah'],
-  [arNorm('عنيزة')]: ['Unayzah','Unaizah'],
-  [arNorm('حائل')]: ['Hail'],
-  [arNorm('تبوك')]: ['Tabuk'],
-  [arNorm('أبها')]: ['Abha'],
-  [arNorm('خميس مشيط')]: ['Khamis Mushayt','Khamis Mushait'],
-  [arNorm('نجران')]: ['Najran'],
-  [arNorm('جازان')]: ['Jazan','Jizan'],
-  [arNorm('الباحة')]: ['Al Bahah','Al Baha'],
-  [arNorm('النعيرية')]: ['An Nairyah','Al Nairyah'],
-  [arNorm('القطيف')]: ['Qatif'],
-  [arNorm('ينبع')]: ['Yanbu'],
-  [arNorm('الجبيل')]: ['Jubail'],
-  [arNorm('حفر الباطن')]: ['Hafar Al-Batin','Hafar Al Batin'],
-  [arNorm('عرعر')]: ['Arar'],
-  [arNorm('سكاكا')]: ['Sakaka'],
+  'الرياض': ['Riyadh','الرياض'],
+  'جدة': ['Jeddah','جدة'],
+  'مكة': ['Makkah','Mecca','مكة'],
+  'المدينة المنورة': ['Medina','Madinah','Al Madinah','المدينة المنورة'],
+  'الدمام': ['Dammam','الدمام'],
+  'الأحساء': ['Al Ahsa','Al-Hasa','Hofuf','Al Hofuf','الأحساء'],
+  'الهفوف': ['Hofuf','Al Hofuf','Al Ahsa','الهفوف'],
+  'بريدة': ['Buraydah','Buraidah','بريدة'],
+  'عنيزة': ['Unayzah','Unaizah','عنيزة'],
+  'حائل': ['Hail','حائل'],
+  'تبوك': ['Tabuk','تبوك'],
+  'أبها': ['Abha','أبها'],
+  'خميس مشيط': ['Khamis Mushayt','Khamis Mushait','خميس مشيط'],
+  'نجران': ['Najran','نجران'],
+  'جازان': ['Jazan','Jizan','جازان'],
+  'جيزان': ['Jazan','Jizan','جيزان'],
+  'الباحة': ['Al Bahah','Al Baha','الباحة'],
+  'النعيرية': ['An Nairyah','Al Nairyah','النعيرية'],
+  'القطيف': ['Qatif','القطيف'],
+  'ينبع': ['Yanbu','ينبع'],
+  'الجبيل': ['Jubail','الجبيل'],
+  'حفر الباطن': ['Hafar Al-Batin','Hafar Al Batin','حفر الباطن'],
 };
 
 const VAR_KEYS = Object.keys(VARIANTS);
 function expandCity(city){
   const n = arNorm(city);
   const exact = VAR_KEYS.find(k => arNorm(k) === n);
+  // EN-first ordering
   const base = exact ? VARIANTS[exact] : [city];
-  const guess = EN_GUESS[n] || [];
-  return Array.from(new Set([city, ...base, ...guess]));
+  const uniq = (arr)=>Array.from(new Set(arr));
+  // لو كتبنا "الأحساء"؛ الأول نجرب Ahsa/Hofuf ثم العربي
+  const enFirst = base.filter(x=>/^[A-Za-z]/.test(x)).concat(base.filter(x=>/^[^\x00-\x7F]/.test(x)));
+  return uniq([ ...enFirst, city ]);
 }
 
 // ---------- helpers ----------
-async function autoScroll(page){
+async function autoScroll(page, minCardsSel){
   for (let i=0;i<SCROLL_STEPS;i++){
     await page.evaluate(()=>window.scrollBy(0, window.innerHeight*0.92));
     await page.waitForTimeout(SCROLL_DELAY);
+    if (minCardsSel){
+      const cnt = await page.$$(minCardsSel);
+      if (cnt.length >= MAX_PER_PROVIDER) break;
+    }
   }
 }
 async function acceptCookies(page){
@@ -128,6 +104,20 @@ function toNum(s){ const t=(s||'').toString().replace(/[^\d.,]/g,'').replace(/,/
 function uniqBy(arr, keyFn){ const st=new Set(); const out=[]; for (const x of arr){ const k=keyFn(x); if (st.has(k)) continue; st.add(k); out.push(x);} return out; }
 const byPriceAsc = (a,b)=>((Number.isFinite(a.lowestPrice)?a.lowestPrice:1e15) - (Number.isFinite(b.lowestPrice)?b.lowestPrice:1e15));
 
+async function providerTry(searchFn, unitsFn, page, q, opts={}){
+  const { listSel, name } = opts;
+  let hits = [];
+  for (let i=0;i<=RETRIES_PER_PROVIDER;i++){
+    try{
+      hits = await searchFn(page, q);
+      if (hits && hits.length) break;
+      // small wait & retry
+      await page.waitForTimeout(1200);
+    }catch{}
+  }
+  return hits || [];
+}
+
 // ---------- Providers ----------
 const providers = {
   Booking: {
@@ -138,7 +128,7 @@ const providers = {
       await acceptCookies(page);
       await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
       await page.waitForSelector('div[data-testid="property-card"], #search_results_table', { timeout: 15000 }).catch(()=>{});
-      await autoScroll(page);
+      await autoScroll(page, 'div[data-testid="property-card"]');
 
       const cards = await page.$$('div[data-testid="property-card"]');
       const out = [];
@@ -167,7 +157,6 @@ const providers = {
       await page.goto(hotelUrl, { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
       await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
-
       const rooms = await page.$$('[data-testid="room-name"], .hprt-roomtype-icon-link');
       for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)){
         const title = await r.innerText().catch(()=>null);
@@ -183,33 +172,29 @@ const providers = {
     }
   },
 
-    Agoda: {
-    name: 'Agoda',
-    searchUrl: q =>
-      `https://www.agoda.com/search?checkIn=${ci}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${encodeURIComponent(q)}`,
-    async search(page, query) {
-      await page.goto(this.searchUrl(query + ' Saudi Arabia'), { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
+  Agoda: {
+    name:'Agoda',
+    searchUrl: q => `https://www.agoda.com/search?checkIn=${ci}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${encodeURIComponent(q)}`,
+    async search(page, query){
+      await page.goto(this.searchUrl(query+' Saudi Arabia'), { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
-      await page.waitForSelector('[data-testid="hotel-name"], [itemprop="name"], a[data-selenium="hotel-name"]', { timeout: 15000 }).catch(() => {});
-      await autoScroll(page);
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
+      await autoScroll(page);  // الصفحه بتجيب كروت أثناء السكرول
 
       const cards = await page.$$('[data-testid="hotel-name"], a[data-selenium="hotel-name"], [itemprop="name"]');
       const out = [];
-      let idx = 0;
-
-      for (const el of cards) {
-        const hotel = (await el.innerText().catch(() => '')).trim();
-
+      let idx=0;
+      for (const el of cards){
+        const hotel = (await el.innerText().catch(()=>''))?.trim();
         const rootHandle = await el.evaluateHandle(n => n.closest('a') || n.closest('div'));
         let href = '';
         try {
           const rootEl = rootHandle.asElement();
           if (rootEl) href = (await rootEl.getAttribute('href')) || '';
         } catch {}
-        if (href && !href.startsWith('http')) href = 'https://www.agoda.com' + href;
+        if (href && !href.startsWith('http')) href = 'https://www.agoda.com'+href;
 
-        // اقرأ نص الجذر لإلتقاط السعر
+        // السعر من نفس الكارت
         let seg = '';
         try {
           const rootEl = rootHandle.asElement();
@@ -220,29 +205,22 @@ const providers = {
 
         if (!hotel || !href) continue;
         idx++;
-        out.push({
-          platform: 'Agoda',
-          rank: idx,
-          hotel,
-          url: href,
-          lowestPrice: Number.isFinite(price) ? price : NaN,
-          currency: 'SAR'
-        });
-        if (out.length >= MAX_PER_PROVIDER) break;
+        out.push({ platform:'Agoda', rank: idx, hotel, url: href, lowestPrice: Number.isFinite(price)?price:NaN, currency:'SAR' });
+        if (out.length>=MAX_PER_PROVIDER) break;
       }
       return out;
     },
-    async units(page, hotelUrl) {
+    async units(page, hotelUrl){
       const out = [];
-      await page.goto(hotelUrl, { waitUntil: 'domcontentloaded', timeout: TIMEOUT });
+      await page.goto(hotelUrl, { waitUntil:'domcontentloaded', timeout: TIMEOUT });
       await acceptCookies(page);
-      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+      await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(()=>{});
       const rooms = await page.$$('[data-component="room-name"], .RoomName, [data-selenium="room-name"]');
-      for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)) {
-        const title = (await r.innerText().catch(() => null)) || 'Room';
-        const seg = await r.evaluate(el => el.parentElement?.innerText || '');
+      for (const r of rooms.slice(0, MAX_UNIT_ROWS_PER_HOTEL)){
+        const title = (await r.innerText().catch(()=>null)) || 'Room';
+        const seg = await r.evaluate(el=>el.parentElement?.innerText || '');
         const m = seg.match(/(SAR|ر\.س|ريال)[^\d]*([\d\.,]+)/g) || [];
-        const nums = m.map(x => toNum(x)).filter(Number.isFinite);
+        const nums = m.map(x=>toNum(x)).filter(Number.isFinite);
         if (!nums.length) continue;
         const cancellable = /Free cancellation|إلغاء مجاني/i.test(seg) ? Math.min(...nums) : null;
         const nonref = /Non-refundable|غير قابل للاسترداد/i.test(seg) ? Math.min(...nums) : null;
@@ -251,7 +229,6 @@ const providers = {
       return out;
     }
   },
-
 
   Expedia: {
     name:'Expedia',
@@ -289,9 +266,9 @@ const providers = {
 
       // Fallback: visible cards
       if (!out.length){
-        const cards = await page.$$('[data-stid="property-listing"]');
+        const cards = await page.$$('[data-stid="property-listing"], [data-test-id="property-card"]');
         for (const c of cards){
-          const nameEl = await c.$('h3[data-stid="content-hotel-title"]');
+          const nameEl = await c.$('h3[data-stid="content-hotel-title"], [itemprop="name"]');
           const name = nameEl ? (await nameEl.innerText()).trim() : '';
           const priceEl = await c.$('[data-stid="price-lockup"], span:has-text("SAR")');
           const priceTxt = priceEl ? (await priceEl.innerText()) : '';
@@ -372,7 +349,7 @@ const providers = {
       try {
         for (const q of variants){
           tried.push(q);
-          hits = await prov.search(page, q);
+          hits = await providerTry(prov.search.bind(prov), prov.units, page, q, { listSel: null, name: provName });
           if (hits && hits.length) break;
         }
       } catch(e){
@@ -407,7 +384,6 @@ const providers = {
       cityProviders[provName] = hotels.sort(byPriceAsc);
     }
 
-    // لا تشطب المدينة حتى لو العييري غير ظاهر – لازم للمقارنة
     result.cities.push({ city, providers: cityProviders });
   }
 
