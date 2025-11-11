@@ -1,13 +1,13 @@
-Riyadh
-Jeddah
-Madinah
-Mecca
-Dammam
-Al Ahsa
-Buraidah
-Hail
-Tabuk
-Abha
-Jazan
-Al Baha
-Al Nairyah
+الرياض
+جدة
+مكة
+المدينة المنورة
+الدمام
+الأحساء
+بريدة
+حائل
+تبوك
+نجران
+جازان
+الباحة
+النعيرية
