@@ -9,131 +9,10 @@
         "Booking": [
           {
             "platform": "Booking",
-            "rank": 2,
-            "hotel": "فندق طيف 1",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/fndq-tyf-mk1.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1509962001_422758441_2_0_0&highlighted_blocks=1509962001_422758441_2_0_0&matching_block_id=1509962001_422758441_2_0_0&sr_pri_blocks=1509962001_422758441_2_0_0__5500&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 55,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 8,
-            "hotel": "شاطئ المرجان للشقق المخدومه",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/shty-lmrjn-llshqq-lmkhdwmh.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=8&hapos=8&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1462973602_420766679_3_0_0&highlighted_blocks=1462973602_420766679_3_0_0&matching_block_id=1462973602_420766679_3_0_0&sr_pri_blocks=1462973602_420766679_3_0_0__15319&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 153,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 6,
-            "hotel": "Rose Jeddah",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/rose-jeddah-jeddah.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=6&hapos=6&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1441948001_415626056_2_0_0&highlighted_blocks=1441948001_415626056_2_0_0&matching_block_id=1441948001_415626056_2_0_0&sr_pri_blocks=1441948001_415626056_2_0_0__15900&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 159,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 3,
-            "hotel": "شقق الريادة النسيم",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/lryd-lfndqyh.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1516038602_423329254_2_0_0&highlighted_blocks=1516038602_423329254_2_0_0&matching_block_id=1516038602_423329254_2_0_0&sr_pri_blocks=1516038602_423329254_2_0_0__17000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 170,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 10,
-            "hotel": "Asiri Boutique 303",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/asiri-boutique-303.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1441529501_415596665_2_0_0&highlighted_blocks=1441529501_415596665_2_0_0&matching_block_id=1441529501_415596665_2_0_0&sr_pri_blocks=1441529501_415596665_2_0_0__19440&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 194,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 5,
-            "hotel": "شقق دار الفرسان المخدومة",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/shqq-dr-lfrsn-lmkhdwm.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=5&hapos=5&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1477585004_419212818_2_0_0&highlighted_blocks=1477585004_419212818_2_0_0&matching_block_id=1477585004_419212818_2_0_0&sr_pri_blocks=1477585004_419212818_2_0_0__20000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 200,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 9,
-            "hotel": "منازل دانا للشقق المخدومة العزيزية",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/mnzl-dn-llshqq-lmkhdwm-reyadh.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=9&hapos=9&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1460129601_417318456_2_0_0&highlighted_blocks=1460129601_417318456_2_0_0&matching_block_id=1460129601_417318456_2_0_0&sr_pri_blocks=1460129601_417318456_2_0_0__22000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 220,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
             "rank": 7,
-            "hotel": "اتزان",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/kanaf-luxury-apartment-two-bedrooms-and-a-hall-jd1.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=7&hapos=7&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1488533501_420416287_2_0_0&highlighted_blocks=1488533501_420416287_2_0_0&matching_block_id=1488533501_420416287_2_0_0&sr_pri_blocks=1488533501_420416287_2_0_0__23800&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 238,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 14,
-            "hotel": "اركان الشهامه",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/rkn-lshhmh-smt.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=14&hapos=14&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1432584402_414826051_2_0_0&highlighted_blocks=1432584402_414826051_2_0_0&matching_block_id=1432584402_414826051_2_0_0&sr_pri_blocks=1432584402_414826051_2_0_0__29750&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 298,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 11,
-            "hotel": "مسرة",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/msr-lty-f.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=11&hapos=11&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1418021401_413476946_2_0_0&highlighted_blocks=1418021401_413476946_2_0_0&matching_block_id=1418021401_413476946_2_0_0&sr_pri_blocks=1418021401_413476946_2_0_0__30000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 300,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 15,
-            "hotel": "مرسى الضيافة",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/mrs-ldyf.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=15&hapos=15&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1432399402_414803772_2_0_0&highlighted_blocks=1432399402_414803772_2_0_0&matching_block_id=1432399402_414803772_2_0_0&sr_pri_blocks=1432399402_414803772_2_0_0__30000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 300,
-            "currency": "SAR",
-            "taxesIncluded": null,
-            "isAlEairy": false,
-            "units": []
-          },
-          {
-            "platform": "Booking",
-            "rank": 4,
-            "hotel": "تاور ام للشقق المخدومه",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/tower-m.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1473922204_418751469_2_0_0&highlighted_blocks=1473922204_418751469_2_0_0&matching_block_id=1473922204_418751469_2_0_0&sr_pri_blocks=1473922204_418751469_2_0_0__33150&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 332,
+            "hotel": "Meral Crown Hotel",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/meral-crown.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=7&hapos=7&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=50714104_358397876_2_2_0&highlighted_blocks=50714104_358397876_2_2_0&matching_block_id=50714104_358397876_2_2_0&sr_pri_blocks=50714104_358397876_2_2_0__27000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 270,
             "currency": "SAR",
             "taxesIncluded": null,
             "isAlEairy": false,
@@ -142,9 +21,97 @@
           {
             "platform": "Booking",
             "rank": 12,
-            "hotel": "A privet room in AL Rawda",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/a-privet-room-in-al-rawda.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=12&hapos=12&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1450281901_423475291_2_0_0&highlighted_blocks=1450281901_423475291_2_0_0&matching_block_id=1450281901_423475291_2_0_0&sr_pri_blocks=1450281901_423475291_2_0_0__35000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 350,
+            "hotel": "Al Masem Serviced Apartments - Al Olaya - Exit 5",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/jnh-lmsm-lmkhdwm-h-lmlk-fhd.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=12&hapos=12&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=998699501_417054546_2_1_0_613080&highlighted_blocks=998699501_417054546_2_1_0_613080&matching_block_id=998699501_417054546_2_1_0_613080&sr_pri_blocks=998699501_417054546_2_1_0_613080_28900&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 289,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 10,
+            "hotel": "نزل اشبونة للشقق المخدومة - اقتصادي",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/ashbonh-suites.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=141300104_265837471_0_0_0&highlighted_blocks=141300104_265837471_0_0_0&matching_block_id=141300104_265837471_0_0_0&sr_pri_blocks=141300104_265837471_0_0_0__30638&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 306,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 15,
+            "hotel": "Smayah Hotel",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/anova.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=15&hapos=15&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=681335106_388530403_2_1_0&highlighted_blocks=681335106_388530403_2_1_0&matching_block_id=681335106_388530403_2_1_0&sr_pri_blocks=681335106_388530403_2_1_0__31500&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 315,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 8,
+            "hotel": "Best Western Premier بيست ويسترن بريمير",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/best-western-premier-riyadh.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=8&hapos=8&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=1502355105_421925135_2_1_0&highlighted_blocks=1502355105_421925135_2_1_0&matching_block_id=1502355105_421925135_2_1_0&sr_pri_blocks=1502355105_421925135_2_1_0__33600&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 336,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 9,
+            "hotel": "Mira Business Hotel",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/mira-business.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=9&hapos=9&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=927008401_364468818_0_2_0_1130792&highlighted_blocks=927008401_364468818_0_2_0_1130792&matching_block_id=927008401_364468818_0_2_0_1130792&sr_pri_blocks=927008401_364468818_0_2_0_1130792_35847&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 358,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 3,
+            "hotel": "Super Luxury One bedroom Al Aqiq",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/super-luxury-one-bedroom-al-aqiq.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=1522267501_423879231_2_0_0&highlighted_blocks=1522267501_423879231_2_0_0&matching_block_id=1522267501_423879231_2_0_0&sr_pri_blocks=1522267501_423879231_2_0_0__42261&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 423,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 14,
+            "hotel": "Samtinn Hotel King Fahad",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/samt-inn-fndq-smt-n.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=14&hapos=14&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=1120603414_397202486_0_2_0&highlighted_blocks=1120603414_397202486_0_2_0&matching_block_id=1120603414_397202486_0_2_0&sr_pri_blocks=1120603414_397202486_0_2_0__46400&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 464,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 11,
+            "hotel": "Rosa Grand Hotel",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/rosa-grand.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=11&hapos=11&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=875394209_421269031_2_1_0&highlighted_blocks=875394209_421269031_2_1_0&matching_block_id=875394209_421269031_2_1_0&sr_pri_blocks=875394209_421269031_2_1_0__49000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 490,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 5,
+            "hotel": "Cantonal Hotel by Warwick",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/cantonal-by-warwick.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=5&hapos=5&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=898738602_387053940_2_41_0_714275&highlighted_blocks=898738602_387053940_2_41_0_714275&matching_block_id=898738602_387053940_2_41_0_714275&sr_pri_blocks=898738602_387053940_2_41_0_714275_61500&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 615,
             "currency": "SAR",
             "taxesIncluded": null,
             "isAlEairy": false,
@@ -153,9 +120,9 @@
           {
             "platform": "Booking",
             "rank": 13,
-            "hotel": "جده",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/jdh-jdh14.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=13&hapos=13&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&all_sr_blocks=1418964901_413569054_2_0_0&highlighted_blocks=1418964901_413569054_2_0_0&matching_block_id=1418964901_413569054_2_0_0&sr_pri_blocks=1418964901_413569054_2_0_0__40000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": 400,
+            "hotel": "Novo Hotel",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/novo-riyadh.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=13&hapos=13&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=1164643801_403919392_2_0_0&highlighted_blocks=1164643801_403919392_2_0_0&matching_block_id=1164643801_403919392_2_0_0&sr_pri_blocks=1164643801_403919392_2_0_0__65250&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 653,
             "currency": "SAR",
             "taxesIncluded": null,
             "isAlEairy": false,
@@ -164,9 +131,42 @@
           {
             "platform": "Booking",
             "rank": 1,
-            "hotel": "الرياض",
-            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/lryd-lryd198.html?aid=304142&label=gen173nr-10CAQoggJCIXNlYXJjaF_Yp9mE2LHZitin2LYsIHNhdWRpIGFyYWJpYUgxWARokwKIAQGYATO4AQrIAQXYAQPoAQH4AQGIAgGoAgG4Av79zsgGwAIB0gIkNGIzNWE0ZWMtYjMzZi00M2MyLWJhZDEtNTZhYmM2ZmE2NTI42AIB4AIB&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=b5bda13ff5f50311&srepoch=1762901773&soh=1&from=searchresults#no_availability_msg&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
-            "lowestPrice": null,
+            "hotel": "شاليهات ومنتجعات ارجان بارك",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/mntj-t-rjn-brk-riyadh.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=835233104_391459070_8_0_0_1132306&highlighted_blocks=835233104_391459070_8_0_0_1132306&matching_block_id=835233104_391459070_8_0_0_1132306&sr_pri_blocks=835233104_391459070_8_0_0_1132306_77000&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 770,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 4,
+            "hotel": "Crowne Plaza Riyadh Palace by IHG",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/riyadh-palace.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=24643739_246084407_2_42_0&highlighted_blocks=24643739_246084407_2_42_0&matching_block_id=24643739_246084407_2_42_0&sr_pri_blocks=24643739_246084407_2_42_0__78900&nad_id=348124c3-9b42-4fd7-bc25-97f0ee7b1674_0&nad_cpc=0.69&nad_track=eyJhdWN0aW9uRXBvY2giOjE3NjI5MDI2NTU0MjEsInJhbmsiOjIsImtvZGRpVHJhY2tpbmdJbmZvIjoiODNoZ2hiQjNJdEtHd3hMOHhiY1F2NDhIQmJUaG1VaFVNbGYrY05iQy8zYm1iVnFBUitwenZOa0VpRjRQU3BocVRzcE5ybHJqeWNqeVRiNnZqLzNsUVZ1VlZ3VlB4elEyb3I0TjVqL3Awb3Fad0d6WjFmSlYrNlNWMUtCNnhqV0lzMmNXVG5lSS9IdE5JUmVxSW1SMmxYTFRyN2RxY3RwbXllWXFDOGZzQ3NSa0F4YTRxM1NvU3VOU1RyYjJEYVhoYW1zcENLZzNKenRydlczTTJMTldmVklGT29uUXN2SUZrVkdxR3g1R2NTLzlPQjNkSVpxMGlXQ0gxckpDSks0d2U0VG5ES2lITXU5MjdPVWUzc1kreGpmZHozdVNOaXBWSSs3N3FxeVA1bnZpTVBZcTBmTDE3bitaQ0hsU1BFVGtqY1J6WEhUNjFGVEd4ZEtMcnJlam45ZTVjOUxvTW1iVStQMmFOLzdGNXpKK3lTYXNNS1VqQVpmRCtQeW5kSlozaVIxTTdkUkVSZjgwem12VkFBU2djVGN1bi8yTHNFK2h2UlNDdzJDd3YrdmIvcGJxbGpyQjdROTdmZGZ0VXhuS0xKb3RqOFl5Z3Q3cGNCLzJBckwrSGhHVDI0WWlUWE90S2FJeFcxbW1GeDJiT0hSYm5jakJsMndsVm9SVHRMSWdyWGFmd2puUys2NUZCamhKTGJPVlhoZU9zUytYcHVpOUI5cXhaK0dSMU14ajBRYUYrOEdVc1NkRGJEMUY2cnlIbkJFU3RsM0hyUjhObXFaVXlqUGMxWmZqR2s4T3lnTzZqeU1iaVVsenJHbGl2VC94d1RTTEVHZGJ6Q05ZUnJFakZMVmhuWUVySzBxTVFzeDNTc01iVFhFTXpRUGUxajVzT2s2MzFjSlU2TE5wSklac0pUKzFpMW1YWUtrbXZRc2VkYjdZL0JhMXNsRmI1dDRPdEV2YTJBSnhnb0ZCUVh1b0IwMGE1NW5RNlBoQ21YbjdvcnRQUVE2NnFpWnhlLzMxOC9PQnVmbTBqdmFkcGJJbk9heW5vcG05eTlpb24zQXVGR1Z3bGlJd292TEFZOHpKM0tCN2xSc3dQMmlqSHlWcWU4cXA4ejJDaFJ0T24yanNob21PaWc4Z01Mb293OU9KeHZjTTNCNURCTlA3THNPeHJwL3V6QitSMHZQMDBXV1RjRmVLN1p6M2d1MDI2ODFpeE9jL0dod0FpTHlJNWNjM3NNa2xPeGVOTEtycVNHRlIrKzlxbjNFdC9JbUtrYW1RMmVEVDl4bm1mV1V6Y2Z0RVN2akFNcmRrelVESUt1cmlsQWRnaFZ3ekZyaU1xdUhvbTJ6RnkyK3FMV3dORUJlTy9YSnE3N1lOTVlkUWhneDZWNmFUTldRN0xucjhSdGZxVFcxTkMzNE9pdmNJWitQU0t4YnlKVy9ZRkFxQTJvTllVTVVody90cHpUYXpJWTJRNmJxYlgvMjE2M3dyWlhYL01WK3pJdGNLYWJtNi9OYTNEeVhEWjlTVGMwYkZCY1FrVTJCMGxibHg4TVc4bGYrVVVteGV1ZnFGRjh4aFJMYWdLcDBtSDlnUmhsL3draW5ETEZhR2lZTXJCY1ZtZFkyL2RxaDBBMURJcHlYMFJzWTJxT3JJVkw4RHFwbmpuVDJFWHpybVJQenlnZHVrNnBmVWc1bnZ3YzlvZkNkaHUwSXdoUWM3R2ZsUW9IY1BEa3RtSDNPdWd0ME9TaWM0cW1wZmg2YXdyMEtQRi8zQlJFZkZPY1R0Zk1rU0dUV3BwTjFQbU54WGxWKzVyMjJNY2xXaDJZanowbFQrSmZIQ3RSY0VEOXE2bXM3ejNTY3NrT2ZlU0YrUkRrazJEZlRrRGMvQ0d5MGxjQllDbnk3WDBsMTExbkVCUkNwUk01c3lLZnhkbHkybTNkdGJXbnoyZXMrQVJlV1pkTVdRIn0%3D&nad_placement=SR_MAIN&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 789,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 2,
+            "hotel": "InterContinental Durrat Al Riyadh Resort & Spa by IHG",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/intercontinental-hotels-durrat-al-riyadh-an-ihg-hotel.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=204442143_372277361_2_33_0&highlighted_blocks=204442143_372277361_2_33_0&matching_block_id=204442143_372277361_2_33_0&sr_pri_blocks=204442143_372277361_2_33_0__89000&nad_id=348124c3-9b42-4fd7-bc25-97f0ee7b1674_4&nad_cpc=0.73&nad_track=eyJhdWN0aW9uRXBvY2giOjE3NjI5MDI2NTU0MjAsInJhbmsiOjEsImtvZGRpVHJhY2tpbmdJbmZvIjoiODNoZ2hiQjNJdEtHd3hMOHhiY1F2NDhBQmJ6aG1kaFVMbGYrY05iQy8zYm1iVnFBUitwenZOa0VpRjRQU3BocVRzcE5ybHBqci9wa1Q2L2xtZjNsUVZ1VlZ3Vk94elEybzc2ZmpQQjJNaVFzME5BK2FBYUdZaGswcjUrZ0w5bHUxZVB4K2xYejdLLzNKU01UcHlaaWFXTDdBM3NpMHZoUXhnUlBVdEJwUmFpSVB1UUR4SUg3TzgzdXJrK0hhOWJQZGNKdWwreHJKVEhpZ3hqaWRtNS9BQ2FMOUMyUzdOOFYxWVJmeVRtcnNFaDladzNydVpqOFRrVkpsL3RleExRazBiUDhUWEpZZmM0WS9vTTV3YXVQa3F6RlUzQUFTdWNMcWdTQ094TXM4dXZVM1ZZV0IvcnMyVVNOSTJkUzIzYkEzN1NSUkZqTnp4N0syNURwRFFKNHRjZlA4NllYYUtIMG1mS1RYT0tIeC9JK1pRWWQ0S1hKYzdHZytEbWpwMjBBSmFWNjV2bUVYNGdqb1NTWXNhaC84aUVONmRMalQ1RWZOYU1DcnZyeDZRZ1ZtQXRjK1dCMDJySmxreDBQNHZXYjl1VE4wY2VvamFSdEN0L0VtQ2tDYlQ2ZTIwYVhXNUt0eWFnRTA0U2l1aFZRZWJuNU91Tk5JS2pUMVFrQXFsQ3M0TjY0Z0F3UXhDV2QzOEZiOUpVa3laYmRKUSt4RFBrK3FjS0oySCtEK2NhOGhpeGkwYkJOZ0ZPS3F0YlRTZ0Z6a0xWa2c1VUxIakIrcTJmazRLWTB6OHkvRXlvRlllWk0wWSsydVlhUi9sNmFJcUFlS3hWcFVHTVdzUjhESVh3L2hjTmhvMEF1a3ZETC9rVjZRbVlUVVl5bzZ0SXlQMkVsRGFtSGtTdFM2Y1dnVzVFUUdTSlZBY2N3ZGgvamNTNGhYSVBkbWRiR1RlM2hpb0hiUGV1Rys2bVN2NTdycFB4a1EwTGM1ZTg3aDVaalhrUkZWcFRuS2I5ci9ndFpNTEtHTlMrNHlnZ0FhSGZGdlZIZEFQZVZVZloyVXpWckdaR1ZEVEpYT1FHWk04eVB4SXlqbVBiUHFWV2FjSDI0cFV6VEVrSzlBbGltTGVydW5DZ05XYWxwUnBrd09lRGFMdlVRVElrVld5dmtLcGxQL2N0aEgwZ283a0JKNGt2UnZoMVdqRWcySVg3cms5M1poNWlkRWphZ09rS2p4ZHlUaVErU2NFWEZySWNBdEpVSmNXUnk1K05NNDA4eGFKY0lnbVA0SXhLczQ3ZTQ0WHBpM0YzVnBJT3R1R0lJeHFFZTAyWTlZTEphUjRFRlZjbEltN1B4NlAzNWtPS2pBUW9sQWE5L2ZRbi9leTJUVlNEbmgreW0xWEZDeFpaV2xFUkNMakNwNGhnL3NsYVdUeG80Q21MVGNNQkhBblFZNUN3cHZIb2lpZDlPVGF1ai8xaTdRZWU0UU0zWGw0cUdXSng4YUFRZHlESU1tYyt4a1JacEZDY0JqVWhmZkFMM1hsYldKN0tsMlQ1SGV4UVplRXVHQktWZFVuNW8zdDZ5NW8vSlREbmg1T0JRdU1JVTdDd1VhMWVOcTE0ekFHWHlzNDdSMGpLMk9hSnI0Y3lpajJDK3g1ejhaQlRKdllFYTRka3BqeVBOUXpGdkFORTgrWHcrL2hPaHc5TXlvL1JxSEMyb21EZUFoaHg1WC9VYSszMVJEOS9BMFFFWjZ3bE1BREhtMUtXYlFYUEtKbWxUVlBOeFBNWWhnR3hsMkF6WnF4TDRKZllUR3J4eVEyYjJTY2FUTy9hUDAzbnNTYmNLR1NoNW5yNWNYYnc1cHUrR1FKZGJjeTVoaCtTeWJ6aTU4OXNpeG5UVmtEQ0l4MEtyeC9lVDdsUEtRVWxQZmVreGJwNlVVbmNxVDNlbUp5OHJxT2dLWXJMZVFTaERDWjVMZGc9PSJ9&nad_placement=SR_MAIN&from_sustainable_property_sr=1&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 890,
+            "currency": "SAR",
+            "taxesIncluded": null,
+            "isAlEairy": false,
+            "units": []
+          },
+          {
+            "platform": "Booking",
+            "rank": 6,
+            "hotel": "Voco - Riyadh by IHG",
+            "url": "https://www.booking.comhttps://www.booking.com/hotel/sa/movenpick-riyadh.html?aid=304142&label=mkt123sc-1a073603-fafe-42ec-aec5-08f41cbd8a26&ucfs=1&arphpl=1&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=6&hapos=6&sr_order=popularity&srpvid=096aa05df0284a2b3597c799a420fec3&srepoch=1762902658&all_sr_blocks=150805523_418985598_2_42_0&highlighted_blocks=150805523_418985598_2_42_0&matching_block_id=150805523_418985598_2_42_0&sr_pri_blocks=150805523_418985598_2_42_0__105000&nad_id=348124c3-9b42-4fd7-bc25-97f0ee7b1674_6&nad_cpc=0.75&nad_track=eyJhdWN0aW9uRXBvY2giOjE3NjI5MDI2NTU0MjIsInJhbmsiOjMsImtvZGRpVHJhY2tpbmdJbmZvIjoiODNoZ2hiQjNJdEtHd3hMOHhiY1F2NDhBQmJUaG1jaFVLbGYrVU5ZcCsxYUc3b0oyeW9Uc3k5U1ErbkVxMkxudUQ1eFdIWjhlLzlNakRQdERQdG9GYjRkbFN4Tk94elEyb3I2ZkRQQjJzaVFzME5BK2FBYUdZaGswcjUrZ0w5bHUzZURSSnBtdlNzaTFFZkZES25mdS9TZHVpUkFpMHNocUgwWitjNHFlRXdGSnVOZnl2dmFSdUw0enY5SWFFbXRMNzNFdklVN1pLbkp3Z08yR21hWUFDQUg3VkNzemtTTi9iek1VWTgzaWk3Z0VueHAvdEQ3OC9BUzhrRW0wcXhBcUVjeG0wd3BFbXNEMEtyM3pHbWM2R3J6RndYS3lZc1ZCcEhFN1hWbzZjN01NcVZZQ0pjakx5RW1oQkhYNzNBYlp6WjJwZFZSYlZCUHYzVjdiOVVNMmlaZHEySDNRMnFyNUY2SFJYT0FJd1BJK1pRWWR3SldyOVFqWkJPdUdZRkovYmtuWDNkZE5sSFRrYzV5VFo3RFJvVE5oeFhTSWYxZ2dzN2lPM2l6WUIxcHREb2R4WDFFMTRzSGtUZDM4Y3FkTGFLcjhPN0ZGOWQ2Yk1PSnpGYWRJQnJIUy9lVXFtV2JWVmZHSFh2RWVuNHU1YVJ3dm1IK2JHalJDQnBIQ0pSY1RBVHczWWNMZ1dGdEhvR0V6YThkc0FyNDZhNk8rOU85MFJTcEVYQjd6cDVHc2o2RUJJUXhUc3hxY0gzMjlzK25VRnhMZE43QVBnTVQ4djdXWFNaSndtak4vMnhDWW9UOGs0Q0kzbEJJZDExR2kyK1NOYnpCYnNtbkcyMUZ0MUYxZzlGcnBPZ0R1WTZ1ang2b21KbTBvY1F1UjcxNFI4WU00UGMxbFd4RGFBb3RwSklac0pUKzFxM21UYktrbXVRc2U5Ym5VSEJjMXNpbEgxbzdhWmo3dHlOaEZEaFEwZW9IR05ERnJtMTdkTTdFVTBSOHRTT1N3dTVQRXV2UWg0bjd6TkRjblhTRjI5UkQ3T0FlTkFKZHdmc0k1VU9pWkVYeGdKQ3hqVEQva3ZCbU92TWw4dUxFK0tSMExYbGlxNVduMTVkZmR1ZjllbVVrbG5xNGZ6bjR4RWlOMVBKRE55LzArKzZ4SUNmWXNaU2JwZ1gzUUFZb3Jkc1JPdmZiK3pLcFVtenZYYkF2UUpiV0svdlBxdTNQdDVsTkhpQm1HMzZoV21KOUY1dXJ1cVhYL0J4d3FjMStBNjJJUUhEY1h3QnlRV0xmZVdHYm9hQ3N3Y1dtRlorL1pYbnI3ZEkyczBCYUlVanAxa2N2T0Uxd1NxSm5VUzRFNFpwdjFuSmV3VU54MElPZktmUXdZUFpvR1NnM2tNUnlENHdvSXlhOTI3OFFJUW40dGgzRUxnekRVMW1la28wNTN1UkNCMExQamgxeFdEOXcvYnE1WWtSeWpjOFhJZG9NR2YrL1BENjJwYklMTjd5YWlia2w3d1RYK3Axb0Rvak9UdmhLeFFXd21jNTNyYkl2eFhnK3FFTk1RMmMvUnAydWhmOHlwR3BhbkNTK2JLOVFlVGFITG9FcHVTN1FuaTBvTXJZZ3NKNWFIdS9vcldDZ0p0c0w1K2NwOFkyS0k5aVNuRy9MYmtKbkhNS094dGdNbzBjbUVTUG1PMm4ySWtFdnpoTGdqSzJoaWhqa3FyKzEzdXdEbGV5Nk9IWXpYdG9yYzlGaWsxM3NLNHdnOGNUZWZmdnA2Qi85RE84bUQrTGxoa2pBSVN0bTlMcU82M1pBL2hpeWFtaUdOSlVXS0NGZHNRK1h6S2hpYXNQMjNEVmJITEQ5L0RlYnI3cWtuMXVqOHM5V0RMek5tSUFOcWdKZ3ROeGtDMHpQeTByWGNZR25mZVB2WkZoNEtQRE96MDJBbWpLVFVDYzhHNEVJc0JUeHF1dm80In0%3D&nad_placement=SR_MAIN&from=searchresults&checkin=2025-11-12&checkout=2025-11-13&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us",
+            "lowestPrice": 1050,
             "currency": "SAR",
             "taxesIncluded": null,
             "isAlEairy": false,
@@ -276,68 +276,68 @@
   ],
   "meta": {
     "الرياض": {
-      "Agoda": "no-results:الرياض",
-      "Expedia": "no-results:الرياض"
+      "Agoda": "no-results:Riyadh|الرياض",
+      "Expedia": "no-results:Riyadh|الرياض"
     },
     "جدة": {
-      "Booking": "no-results:جدة",
-      "Agoda": "no-results:جدة",
-      "Expedia": "no-results:جدة"
+      "Booking": "no-results:Jeddah|جدة",
+      "Agoda": "no-results:Jeddah|جدة",
+      "Expedia": "no-results:Jeddah|جدة"
     },
     "مكة": {
-      "Booking": "no-results:مكة",
-      "Agoda": "no-results:مكة",
-      "Expedia": "no-results:مكة"
+      "Booking": "no-results:Makkah|Mecca|مكة",
+      "Agoda": "no-results:Makkah|Mecca|مكة",
+      "Expedia": "no-results:Makkah|Mecca|مكة"
     },
     "المدينة المنورة": {
-      "Booking": "no-results:المدينة المنورة",
-      "Agoda": "no-results:المدينة المنورة",
-      "Expedia": "no-results:المدينة المنورة"
+      "Booking": "no-results:Medina|Madinah|Al Madinah|المدينة المنورة",
+      "Agoda": "no-results:Medina|Madinah|Al Madinah|المدينة المنورة",
+      "Expedia": "no-results:Medina|Madinah|Al Madinah|المدينة المنورة"
     },
     "الدمام": {
-      "Booking": "no-results:الدمام",
-      "Agoda": "no-results:الدمام",
-      "Expedia": "no-results:الدمام"
+      "Booking": "no-results:Dammam|الدمام",
+      "Agoda": "no-results:Dammam|الدمام",
+      "Expedia": "no-results:Dammam|الدمام"
     },
     "الأحساء": {
-      "Booking": "no-results:الأحساء",
-      "Agoda": "no-results:الأحساء",
-      "Expedia": "no-results:الأحساء"
+      "Booking": "no-results:Al Ahsa|Al-Hasa|Hofuf|Al Hofuf|الأحساء",
+      "Agoda": "no-results:Al Ahsa|Al-Hasa|Hofuf|Al Hofuf|الأحساء",
+      "Expedia": "no-results:Al Ahsa|Al-Hasa|Hofuf|Al Hofuf|الأحساء"
     },
     "بريدة": {
-      "Booking": "no-results:بريدة",
-      "Agoda": "no-results:بريدة",
-      "Expedia": "no-results:بريدة"
+      "Booking": "no-results:Buraydah|Buraidah|بريدة",
+      "Agoda": "no-results:Buraydah|Buraidah|بريدة",
+      "Expedia": "no-results:Buraydah|Buraidah|بريدة"
     },
     "حائل": {
-      "Booking": "no-results:حائل",
-      "Agoda": "no-results:حائل",
-      "Expedia": "no-results:حائل"
+      "Booking": "no-results:Hail|حائل",
+      "Agoda": "no-results:Hail|حائل",
+      "Expedia": "no-results:Hail|حائل"
     },
     "تبوك": {
-      "Booking": "no-results:تبوك",
-      "Agoda": "no-results:تبوك",
-      "Expedia": "no-results:تبوك"
+      "Booking": "no-results:Tabuk|تبوك",
+      "Agoda": "no-results:Tabuk|تبوك",
+      "Expedia": "no-results:Tabuk|تبوك"
     },
     "جازان": {
-      "Booking": "no-results:جازان",
-      "Agoda": "no-results:جازان",
-      "Expedia": "no-results:جازان"
+      "Booking": "no-results:Jazan|Jizan|جازان",
+      "Agoda": "no-results:Jazan|Jizan|جازان",
+      "Expedia": "no-results:Jazan|Jizan|جازان"
     },
     "جيزان": {
-      "Booking": "no-results:جيزان",
-      "Agoda": "no-results:جيزان",
-      "Expedia": "no-results:جيزان"
+      "Booking": "no-results:Jazan|Jizan|جيزان",
+      "Agoda": "no-results:Jazan|Jizan|جيزان",
+      "Expedia": "no-results:Jazan|Jizan|جيزان"
     },
     "الباحة": {
-      "Booking": "no-results:الباحة",
-      "Agoda": "no-results:الباحة",
-      "Expedia": "no-results:الباحة"
+      "Booking": "no-results:Al Bahah|Al Baha|الباحة",
+      "Agoda": "no-results:Al Bahah|Al Baha|الباحة",
+      "Expedia": "no-results:Al Bahah|Al Baha|الباحة"
     },
     "النعيرية": {
-      "Booking": "no-results:النعيرية",
-      "Agoda": "no-results:النعيرية",
-      "Expedia": "no-results:النعيرية"
+      "Booking": "no-results:An Nairyah|Al Nairyah|النعيرية",
+      "Agoda": "no-results:An Nairyah|Al Nairyah|النعيرية",
+      "Expedia": "no-results:An Nairyah|Al Nairyah|النعيرية"
     }
   }
 }
