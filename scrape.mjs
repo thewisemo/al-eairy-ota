@@ -1,16 +1,23 @@
-// scrape.mjs — Playwright scraper v2
+// scrape.mjs — Playwright scraper v3 (per-platform groups + cities.txt + include all Al Eairy)
 import { chromium } from 'playwright';
 import fs from 'fs';
 
-const CITIES = [
-  'Riyadh','Jeddah','Dammam','Al Ahsa','Al Hofuf','Khobar','Madinah','Mecca',
-  'Buraidah','Hail','Tabuk','Abha','Khamis Mushait','Najran','Jazan','Al Baha',
-  'Al Nairyah','Qatif','Yanbu','Arar','Sakaka','Hafar Al-Batin','Jubail','Unaizah'
-];
+function loadCities(){
+  try{
+    const txt = fs.readFileSync('data/cities.txt','utf8');
+    return txt.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+  }catch(e){
+    console.log('cities.txt not found; please create data/cities.txt with one city per line.');
+    return [];
+  }
+}
+
+const CITIES = loadCities();
 const BRAND_RX = [/al\s*eairy/i, /العييري/, /al-?ayeri/i];
 const MAX_PER_PROVIDER = 15;
-const MAX_UNIT_ROWS_PER_HOTEL = 20;
+const MAX_UNIT_ROWS_PER_HOTEL = 30;
 const TIMEOUT = 35000;
+const DELAY_MS = 600;
 
 const today = new Date();
 const ci = ymd(new Date(today.getTime()+1*864e5));
@@ -19,15 +26,15 @@ const co = ymd(new Date(today.getTime()+2*864e5));
 function ymd(d){ return d.toISOString().slice(0,10); }
 function isAlEairy(name=''){ return BRAND_RX.some(rx=>rx.test(name)); }
 function toNum(s){ const t=(s||'').toString().replace(/[^\d.,]/g,'').replace(/,/g,''); return t?+t:NaN; }
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
 async function go(p,u){ await p.goto(u,{waitUntil:'domcontentloaded',timeout:TIMEOUT}); }
-function sortByPriceAsc(arr){ return arr.sort((a,b)=> (Number.isFinite(a.lowestPrice)?a.lowestPrice:1e15) - (Number.isFinite(b.lowestPrice)?b.lowestPrice:1e15)); }
 
 const providers = {
-  booking: {
-    name:'Booking',
+  Booking: {
+    key:'Booking',
     buildSearch:(city)=>`https://www.booking.com/searchresults.html?ss=${encodeURIComponent(`${city}, Saudi Arabia`)}&checkin=${ci}&checkout=${co}&group_adults=2&no_rooms=1&group_children=0&selected_currency=SAR&lang=en-us`,
     search: async (page, city)=>{
-      await go(page, providers.booking.buildSearch(city));
+      await go(page, providers.Booking.buildSearch(city));
       const cards = await page.$$('div[data-testid="property-card"]');
       const out = [];
       let idx = 0;
@@ -64,11 +71,11 @@ const providers = {
     }
   },
 
-  agoda: {
-    name:'Agoda',
+  Agoda: {
+    key:'Agoda',
     buildSearch:(city)=>`https://www.agoda.com/search?checkIn=${ci}&los=1&rooms=1&adults=2&children=0&pslc=SAR&locale=en-us&text=${encodeURIComponent(`${city} Saudi Arabia`)}`,
     search: async (page, city)=>{
-      await go(page, providers.agoda.buildSearch(city));
+      await go(page, providers.Agoda.buildSearch(city));
       const out = [];
       const cards = await page.$$('[data-testid="hotel-name"], [itemprop="name"]');
       let idx = 0;
@@ -106,11 +113,11 @@ const providers = {
     }
   },
 
-  expedia: {
-    name:'Expedia',
+  Expedia: {
+    key:'Expedia',
     buildSearch:(city)=>`https://www.expedia.com/Hotel-Search?destination=${encodeURIComponent(`${city}, Saudi Arabia`)}&startDate=${ci}&endDate=${co}&adults=2&rooms=1&langid=1033&currency=SAR`,
     search: async (page, city)=>{
-      await go(page, providers.expedia.buildSearch(city));
+      await go(page, providers.Expedia.buildSearch(city));
       const out = [];
       const dataEl = await page.$('#__NEXT_DATA__');
       let idx = 0;
@@ -169,58 +176,59 @@ function uniqBy(arr, keyFn){
 
 (async ()=>{
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage({ userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36' });
+  const context = await browser.newContext({
+    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36',
+    locale: 'en-US',
+  });
+  const page = await context.newPage();
 
-  const result = { date: ymd(today), checkIn: ci, checkOut: co, cities: [] };
+  const result = { date: ymd(new Date()), checkIn: ci, checkOut: co, cities: [] };
 
   for (const city of CITIES){
-    let perProvider = [];
-    for (const key of ['booking','agoda','expedia']){
-      const p = providers[key];
+    const cityProviders = {};
+
+    for (const key of ['Booking','Agoda','Expedia']){
+      const prov = providers[key];
+      let hits = [];
       try {
-        const hits = await p.search(page, city);
-        perProvider = perProvider.concat(hits);
-      } catch(e){ /* ignore to keep run alive */ }
+        hits = await prov.search(page, city);
+      } catch(e){ hits = []; }
+      // Include all Al Eairy + top15 in default ranking order
+      const alOnly = hits.filter(h=>isAlEairy(h.hotel));
+      const top15 = hits.slice(0, MAX_PER_PROVIDER);
+      const chosen = uniqBy(alOnly.concat(top15), h=>`${h.platform}|${h.hotel}`);
+
+      const hotels = [];
+      for (const h of chosen){
+        let units = [];
+        try { units = await prov.units(page, h.url); } catch(e){ units = []; }
+        hotels.push({
+          platform: h.platform,
+          rank: h.rank || null,
+          hotel: h.hotel,
+          url: h.url,
+          lowestPrice: Number.isFinite(h.lowestPrice) ? h.lowestPrice : null,
+          currency: 'SAR',
+          taxesIncluded: null,
+          isAlEairy: isAlEairy(h.hotel),
+          units: units.map(u=>({ name: u.name, price: u.price, cancellable: u.cancellable ?? null, nonRefundable: u.nonRefundable ?? null }))
+        });
+        await sleep(DELAY_MS);
+      }
+      cityProviders[key] = hotels;
+      await sleep(DELAY_MS);
     }
 
-    // لازم المدينة يكون فيها العييري علشان نكمّلها
-    if (!perProvider.some(h=>isAlEairy(h.hotel))) continue;
+    const hasAl = Object.values(cityProviders).some(list => (list||[]).some(h=>h.isAlEairy));
+    if (!hasAl) continue;
 
-    // أرخص 15 للملخص
-    const citySorted = sortByPriceAsc(perProvider.slice());
-    const cheapest15 = citySorted.slice(0,15);
-
-    // أضف دائمًا كل فنادق العييري حتى لو خارج الـ15
-    const aeExtras = perProvider.filter(h=>isAlEairy(h.hotel));
-    const chosen = uniqBy(cheapest15.concat(aeExtras), h=>`${h.platform}|${h.hotel}`);
-
-    // نزول للوحدات
-    const hotels = [];
-    for (let i=0; i<chosen.length; i++){
-      const h = chosen[i];
-      const prov = providers[h.platform.toLowerCase()];
-      let units = [];
-      try { units = prov ? (await prov.units(page, h.url)) : []; } catch(e){ units = []; }
-      hotels.push({
-        platform: h.platform,
-        rank: h.rank || null,          // ترتيب داخل المنصة (قرّبناه من موضع الكارت)
-        hotel: h.hotel,
-        url: h.url,
-        lowestPrice: Number.isFinite(h.lowestPrice) ? h.lowestPrice : null,
-        currency: 'SAR',
-        taxesIncluded: null,
-        isAlEairy: isAlEairy(h.hotel),
-        units: units.map(u=>({ name: u.name, price: u.price, cancellable: u.cancellable ?? null, nonRefundable: u.nonRefundable ?? null }))
-      });
-    }
-
-    result.cities.push({ city, providers: ['Booking','Agoda','Expedia'], hotels });
+    result.cities.push({ city, providers: cityProviders });
   }
 
   await browser.close();
 
   fs.mkdirSync('data', { recursive: true });
-  const fname = `data/al-eairy-ota-${ymd(today)}.json`;
+  const fname = `data/al-eairy-ota-${ci}.json`;
   fs.writeFileSync(fname, JSON.stringify(result, null, 2));
   fs.writeFileSync('data/latest.json', JSON.stringify(result, null, 2));
   console.log('Written:', fname, 'and data/latest.json');

@@ -1,13 +1,12 @@
-# Al Eairy OTA — Starter Pack
+# Al Eairy OTA — v3
 
-This repo contains:
-- `.github/workflows/ota-scan.yml` (GitHub Actions workflow; runs daily)
-- `scrape.mjs` (Playwright scraper)
-- `package.json` (dev deps)
-- `data/.gitkeep` (empty placeholder for data folder)
+- استخدم `data/cities.txt` لوضع **المدن التي للعييري فروع فيها فقط** (سطر لكل مدينة).
+- النتائج تُحفظ في `data/latest.json`، مجمعة **لكل منصة داخل كل مدينة**.
+- Google Apps Script يكتب جدول يومي إلى Google Sheet باسم **OTA Dashboard** (تبويب Daily)، ويرسل بريد ثنائي + CSV.
 
-## How to use
-1) Upload these files to your **public** GitHub repository root.
-2) Open the **Actions** tab, enable workflows, then **Run workflow** once.
-3) After it finishes, check `data/latest.json`. Click **Raw** and copy the URL.
-4) In Google Apps Script, paste that raw URL in `REMOTE_JSON_URL` and create a daily trigger.
+## خطوات سريعة
+1) ارفع الملفات على ريبو GitHub عام.
+2) افتح `data/cities.txt` وعدّل المدن حسب فروع العييري.
+3) شغّل الـ Action يدويًا أول مرة، وبعدها هيشتغل يوميًا 18:00 UTC (21:00 KSA).
+4) خذ رابط RAW لـ `data/latest.json` وحطه داخل Apps Script في `REMOTE_JSON_URL`.
+5) شغّل `runDailyReport` مرة ثم اعمل Trigger يومي 21:05 (الرياض).
