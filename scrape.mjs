@@ -39,12 +39,10 @@ function arNorm(s=''){
 
 const VARIANTS = {
   'بريدة': ['Buraydah','Buraidah','بريدة'],
-  'النعيرية': ['An Nairyah','Al Nairyah','النعيرية'],
   'الدمام': ['Dammam','الدمام'],
   'المدينة المنورة': ['Medina','Madinah','Al Madinah','المدينة المنورة'],
   'الأحساء': ['Al Ahsa','Al-Hasa','Hofuf','Al Hofuf','الأحساء'],
   'حائل': ['Hail','حائل'],
-  'تبوك': ['Tabuk','تبوك'],
   'جازان': ['Jazan','Jizan','جازان'],
   'جيزان': ['Jazan','Jizan','جيزان'],
   'الباحة': ['Al Bahah','Al Baha','الباحة'],
