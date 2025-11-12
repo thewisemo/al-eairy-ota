@@ -26,7 +26,7 @@ function loadCities(){
     const arr = txt.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
     if (arr.length) return arr;
   } catch {}
-  return ['الأحساء','النعيرية','بريدة','الدمام','المدينة المنورة','مكة','جدة','حائل','الباحة','جازان','تبوك','أبها'];
+  return ['الأحساء','بريدة','الدمام','المدينة المنورة','حائل','الباحة','جازان'];
 }
 
 function arNorm(s=''){
