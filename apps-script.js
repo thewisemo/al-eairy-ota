@@ -1,7 +1,7 @@
 /** Al Eairy — Daily OTA email + CSV (ALL units) — v3.3 **/
 const CFG = {
   TIMEZONE: 'Asia/Riyadh',
-  RECIPIENTS: ['imwisemo@gmail.com','eaisocials2025@gmail.com'],
+  RECIPIENTS: ['msw.sa99@gmail.com','eaisocials2025@gmail.com'],
   SENDER_NAME: 'Al Eairy — Daily OTA Report',
   REMOTE_JSON_URL: 'https://raw.githubusercontent.com/thewisemo/al-eairy-ota/main/data/latest.json',
 };
@@ -63,8 +63,38 @@ function runDailyReport(){
   });
 
   // جهّز CSV
-  const csvHeader = ['Date','City','Platform','Rank','Hotel','DirectURL','LowestPrice','Currency','TaxesIncluded','Unit','UnitPrice','CheapestCancellable','CheapestNonRefund','IsAlEairy'];
-  const csvBlob = Utilities.newBlob([ [csvHeader.join(',')].concat(csvRows.map(r=>r.join(','))).join('\n') ], 'text/csv', `al-eairy-ota-${data.checkIn||dateStr}.csv`);
+// --- بعد بناء csvRows و mailParts و tableParts ---
+// 1) رأس الأعمدة
+const csvHeader = [
+  'Date','City','Platform','Rank','Hotel','DirectURL',
+  'LowestPrice','Currency','TaxesIncluded',
+  'Unit','UnitPrice','CheapestCancellable','CheapestNonRefund','IsAlEairy'
+];
+
+// 2) دالة تساعدنا على الاقتباس الآمن للقيم (عشان الفواصل والروابط)
+function csvQ(v) {
+  const s = String(v == null ? '' : v);
+  return `"${s.replace(/"/g, '""')}"`;
+}
+
+// 3) ابنِ نص CSV واحد (مع BOM لـ Excel يدعم العربي)
+const csvString =
+  '\uFEFF' +                // BOM للغة العربية
+  [csvHeader, ...csvRows]
+    .map(row => row.map(csvQ).join(','))
+    .join('\n');
+
+// 4) اعمل Blob من نص واحد فقط
+const csvBlob = Utilities.newBlob(csvString, 'text/csv', `al-eairy-ota-${data.checkIn || dateStr}.csv`);
+
+// 5) الإرسال
+GmailApp.sendEmail(
+  CFG.RECIPIENTS.join(','),
+  `Daily OTA price scan — Al Eairy — ${data.date}`,
+  introEN + '\n' + introAR,
+  { name: CFG.SENDER_NAME, htmlBody: html, attachments: [csvBlob] }
+);
+
 
   // البريد (بالثنائي EN/AR)
   const introEN = `Hello,\n\nHere is today’s OTA price scan (2 adults, 1 night, check-in ${data.checkIn}):\n\n${mailParts.join('\n')}\n\n`;
